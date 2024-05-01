@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <!--    form view-->
+    <record id="view_pms_team_form" model="ir.ui.view">
+        <field name="name">pms.team.form</field>
+        <field name="model">pms.team</field>
+        <field name="arch" type="xml">
+            <form string="teams">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="team_name"/>
+                            <field name="team_member_ids"/>
+                            <field name="assigned_project_id"/>
+                            <field name="project_manager"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="view_pms_team_tree" model="ir.ui.view">
+        <field name="name">pms.team.tree</field>
+        <field name="model">pms.team</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="team_name"/>
+                <field name="team_member_ids" widget="many2many_tags"/>
+                <field name="assigned_project_id" widget="many2one_tags"/>
+                <field name="project_manager"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_pms_team" model="ir.actions.act_window">
+        <field name="name">Teams</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pms.team</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pms_team" name="Team List" parent="menu_pms_team_master"
+              action="action_pms_team"/>
+</odoo>

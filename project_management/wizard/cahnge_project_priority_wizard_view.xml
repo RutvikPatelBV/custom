@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="change_project_priority_wizard_form" model="ir.ui.view">
+            <field name="name">change.project.priority.wizard.form</field>
+            <field name="model">change.project.priority.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Change Project Priority">
+                    <group>
+                        <field name="priority"/>
+                    </group>
+                    <footer>
+                        <button class="btn-primary"
+                                name="change_priority"
+                                type="object"
+                                string="Change"/>
+                        <button string="Discard" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_change_project_priority" model="ir.actions.act_window">
+            <field name="name">change project priority</field>
+            <field name="res_model">change.project.priority.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="change_project_priority_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

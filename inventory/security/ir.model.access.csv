@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+inventory.access_inventory_product,access_inventory_product,inventory.model_inventory_product,base.group_user,1,1,1,1
+inventory.access_inventory_warehouse,access_inventory_warehouse,inventory.model_inventory_warehouse,base.group_user,1,1,1,1
+inventory.access_inventory_shipment,access_inventory_shipment,inventory.model_inventory_shipment,base.group_user,1,1,1,1
+inventory.access_inventory_supplier,access_inventory_supplier,inventory.model_inventory_supplier,base.group_user,1,1,1,1
+inventory.access_inventory_order,access_inventory_order,inventory.model_inventory_order,base.group_user,1,1,1,1

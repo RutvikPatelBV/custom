@@ -1,0 +1,26 @@
+{
+    'name': 'Project Management System',
+    'author': 'Rutvik Patel',
+    'version': '1.1',
+    'summery': 'This is  Project Management System',
+    'sequence': -1,
+    'application': True,
+    'installable': True,
+    'depends': ['base', 'sale_management','sale'],
+    'data': [
+        "security/ir.model.access.csv",
+        "data/data.xml",
+        "data/data2.xml",
+        "wizard/cahnge_project_priority_wizard_view.xml",
+        "views/menu_view.xml",
+        "views/employee_view.xml",
+        "views/project_view.xml",
+        "views/team_view.xml",
+        "views/frontend_emp_view.xml",
+        "views/backend_emp_view.xml",
+        "views/qa_emp_view.xml",
+        "views/designer_emp_view.xml",
+        "views/task_view.xml",
+        "views/expriment_view.xml",
+    ]
+}

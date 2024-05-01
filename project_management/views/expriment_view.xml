@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    form view-->
+    <record id="view_pms_expriment_form" model="ir.ui.view">
+        <field name="name">pms.expriment.form</field>
+        <field name="model">pms.expriment</field>
+        <field name="arch" type="xml">
+            <form string="expriments">
+                 <header>
+                    <button name="recordset_operation" string="Recordset Operation" type="object"/>
+                </header>
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="team_name"/>
+                            <field name="team_member_ids"/>
+                            <field name="assigned_project_ids"/>
+                            <field name="project_manager"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="view_pms_expriment_tree" model="ir.ui.view">
+        <field name="name">pms.expriment.tree</field>
+        <field name="model">pms.expriment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="team_name"/>
+                <field name="team_member_ids" widget="many2many_tags"/>
+                <field name="assigned_project_ids" widget="many2one_tags"/>
+                <field name="project_manager"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="view_pms_expriment_inherit" model="ir.ui.view">
+        <field name="name">pms.form.inheriter</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="enable_cancel" string="cancel disable"/>
+                <field name="nick_name"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_pms_expriment_inherit_two" model="ir.ui.view">
+        <field name="name">pms.form.inherite.two</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']"
+                   position="after">
+                <field name="custom_name" string="custom name"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_pms_expriment_inherit_three" model="ir.ui.view">
+        <field name="name">pms.form.inherite.three</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[@name='operations']/field[@name='move_ids_without_package']/tree/field[@name='product_uom_qty']"
+                   position="after">
+                <field name="custom_name" string="custom name"/>
+             </xpath>
+            <xpath expr="//form/sheet/group/group/field[@name='partner_id']"
+                   position="after">
+                <field name="nick_name"/>
+             </xpath>
+        </field>
+    </record>
+
+    <record id="action_pms_expriment" model="ir.actions.act_window">
+        <field name="name">expriments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pms.expriment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pms_expriment" name="expriment List" parent="menu_pms_expriment_master"
+              action="action_pms_expriment"/>
+</odoo>
+
+
+
+

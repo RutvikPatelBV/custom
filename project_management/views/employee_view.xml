@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    form view-->
+    <record id="view_pms_employee_form" model="ir.ui.view">
+        <field name="name">pms.employee.form</field>
+        <field name="model">pms.employee</field>
+        <field name="arch" type="xml">
+            <form string="Employees">
+                <header>
+                    <button name="use_group_read" string="  group read" type="object"/>
+
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_team" type="object" class="oe_stat_button"
+                                icon="fa-users">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">In Teams</span>
+                                <field name="emp_in_team" class="o_stat_value"/>
+                             </div>
+                        </button>
+                    </div>
+<!--                    invisible="invoice_count == 0"-->
+                    <div class="oe_title">
+                        <h1>
+                            <field name="emp_id" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="emp_name"/>
+                            <field name="emp_role"/>
+                            <field name="emp_gender"/>
+                        </group>
+                        <group>
+                            <field name="joining_date"/>
+                            <field name="emp_experience"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Essential Information" name="essential_information">
+                            <group>
+                                <field name="emp_photo" widget="image" style="width:200px;height:200px;"/>
+                                <field name="emp_address"/>
+                                <field name="emp_salary"/>
+                                <field name="currency_id"/>
+                                <field name="emp_country"/>
+                                <field name="emp_country_new"/>
+                                <field name="emp_dob"/>
+                                <field name="emp_age"/>
+                            </group>
+                        </page>
+                        <page string="Other Information" name="other_information">
+                            <group>
+                            <field name="emp_extra_achievements" placeholder="Enter Achievements"/>
+                            <field name="emp_hobby"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="view_pms_employee_tree" model="ir.ui.view">
+        <field name="name">pms.employee.tree</field>
+        <field name="model">pms.employee</field>
+        <field name="arch" type="xml">
+            <tree expand="1">
+                <field name="sequ" widget="handle"/>
+                <field name="emp_name"/>
+                <field name="emp_role"/>
+                <field name="emp_gender"/>
+                <field name="joining_date"/>
+                <field name="emp_dob"/>
+                <field name="emp_experience"/>
+                <field name="emp_salary"/>
+                <field name="currency_id"/>
+                <field name="emp_country"/>
+            </tree>
+        </field>
+    </record>
+    <!--    search view-->
+    <record id="view_pms_employee_search" model="ir.ui.view">
+        <field name="name">pms.employee.search</field>
+        <field name="model">pms.employee</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="emp_name" filter_domain="['|',('emp_name','ilike',self),('emp_role','ilike',self)]" string="search for"/>
+                <field name="emp_role"/>
+                <field name="joining_date"/>
+                <filter name="frontend_developer" string="Frontend Developer" domain="[('emp_role','=','frontend_developer')]"/>
+                <filter name="backend_developer" string="Backend Developer" domain="[('emp_role','=','backend_developer')]"/>
+                <filter name="designer" string="Designer" domain="[('emp_role','=','designer')]"/>
+                <filter name="qa_tester" string="QA Tester" domain="[('emp_role','=','qa_tester')]"/>
+                <searchpanel>
+                    <field name="emp_role" string="Employee Type" enable_counters="1"/>
+                </searchpanel>
+                <group expand="1" string="Group By" >
+                    <filter string="By Role" name="group_by_role" context="{'group_by':'emp_role'}"/>
+                    <filter string="By Gender" name="group_by_gender" context="{'group_by':'emp_gender'}"/>
+                 </group>
+             </search>
+        </field>
+    </record>
+    <record id="view_pms_employee_kanban" model="ir.ui.view">
+        <field name="name">pms.employee.kanban</field>
+        <field name="model">pms.employee</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="emp_photo" widget="image" style="width:200px; height:200px;"/>
+                <field name="emp_name"/>
+                <field name="emp_role"/>
+                <field name="emp_experience"/>
+                <field name="emp_country"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <div class="o_kanban_image d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('pms.employee','emp_photo',record.id.raw_value)}'">
+<!--                                <img class="oe_kanban_image_inner_pic" t-att-src="kanban_image('pms.employee','emp_photo',record.id.raw_value)"/>-->
+                            </div>
+                            <div class="oe_kanban_details d-flex flex-column">
+                                <strong>
+                                    <field name="emp_name"/>
+                                </strong>
+                                <ul>
+                                    <li>Role:- <field name="emp_role"/></li>
+                                    <li>Experience:- <field name="emp_experience"/></li>
+                                    <li>Country:- <field name="emp_country"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <!--    Action view-->
+    <record id="action_pms_employee" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pms.employee</field>
+        <field name="context">{'search_default_group_by_role'   :1}</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    <menuitem id="menu_pms_employee" name="Employee List" parent="menu_pms_emp_master"
+              action="action_pms_employee"/>
+</odoo>
+
+

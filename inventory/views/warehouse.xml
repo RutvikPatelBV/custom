@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    form view    -->
+    <record id="inventory_warehouse_form_view" model="ir.ui.view">
+        <field name="name">inventory.warehouse.form</field>
+        <field name="model">inventory.warehouse</field>
+        <field name="arch" type="xml">
+            <form string="Warehouse Details">
+                <sheet>
+                    <group>
+                        <field name="warehouse_owner"/>
+                        <field name="warehouse_location"/>
+                        <field name="warehouse_capacity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view    -->
+    <record id="inventory_warehouse_tree_view" model="ir.ui.view">
+        <field name="name">inventory.warehouse.tree</field>
+        <field name="model">inventory.warehouse</field>
+        <field name="arch" type="xml">
+            <tree string="Warehouse Details List">
+                <field name="warehouse_owner"/>
+                <field name="warehouse_location"/>
+                <field name="warehouse_capacity"/>
+            </tree>
+        </field>
+    </record>
+    <!--    action part    -->
+    <record id="action_inventory_warehouse" model="ir.actions.act_window">
+        <field name="name">Warehouse</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">inventory.warehouse</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!--    action connect to menulist    -->
+    <menuitem
+            id="menu_inventory_warehouse"
+            name="Warehouse list"
+            parent="menu_inventory_warehouse_master"
+            action="action_inventory_warehouse"
+    />
+</odoo>

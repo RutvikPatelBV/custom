@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--    Action view-->
+    <record id="action_pms_backend_employee" model="ir.actions.act_window">
+        <field name="name">Backend Developer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pms.employee</field>
+        <field name="domain">[('emp_role','=','backend_developer')]</field>
+        <field name="context">{'default_emp_role':'backend_developer'}</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pms_backend_employee" name="Backend Developer" parent="menu_pms_emp_master"
+              action="action_pms_backend_employee"/>
+</odoo>
+
+

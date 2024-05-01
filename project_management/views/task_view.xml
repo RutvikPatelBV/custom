@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    form view-->
+    <record id="view_pms_task_form" model="ir.ui.view">
+        <field name="name">pms.task.form</field>
+        <field name="model">pms.task</field>
+        <field name="arch" type="xml">
+            <form string="tasks">
+                <header>
+                    <field name="task_status" widget="statusbar" options="{'clickable':'1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="task_name"/>
+                            <field name="related_project_id"/>
+                         </group>
+                        <group>
+                            <field name="task_description"/>
+                            <field name="depended_task_ids"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="view_pms_task_tree" model="ir.ui.view">
+        <field name="name">pms.task.tree</field>
+        <field name="model">pms.task</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="task_name"/>
+                <field name="related_project_id" widget="many2one_tags"/>
+                <field name="task_description"/>
+                <field name="depended_task_ids" widget="many2many_tags"/>
+                <field name="task_status" />
+            </tree>
+        </field>
+    </record>
+    <!--    Action view-->
+    <record id="action_pms_task" model="ir.actions.act_window">
+        <field name="name">tasks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pms.task</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pms_task" name="task List" parent="menu_pms_task_master"
+              action="action_pms_task"/>
+</odoo>
+
+

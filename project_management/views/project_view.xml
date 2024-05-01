@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    form view-->
+    <record id="view_pms_project_form" model="ir.ui.view">
+        <field name="name">pms.project.form</field>
+        <field name="model">pms.project</field>
+        <field name="arch" type="xml">
+            <form string="Projects">
+                <header>
+                    <field name="project_status" widget="statusbar" options="{'clickable': 'true'}"/>
+                    <button name="state_change" string="Next Stage" type="object"
+                            confirm="confirmed the present state completed" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_team_from_project" type="object" class="oe_stat_button"
+                                icon="fa-users">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">No Of Team Working On</span>
+                                <field name="no_of_team" class="o_stat_value"/>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="project_ref_id" string="Project_Id" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_name"/>
+                            <field name="project_description"/>
+                            <field name="project_budget"/>
+                            <field name="currency_id"/>
+                        </group>
+                        <group>
+                            <field name="project_start_date"/>
+                            <field name="project_end_date"/>
+                            <field name="project_manager"/>
+                            <field name="project_manager_experience"/>
+                        </group>
+                    </group>
+                    <div>
+                        <h2>
+                            <field name="priority" widget="priority" string="Project Priority"/>
+                        </h2>
+                          <button name="%(action_change_project_priority)d" string="Change project priority" type="action"
+                             class="oe_highlight"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="view_pms_project_tree" model="ir.ui.view">
+        <field name="name">pms.project.tree</field>
+        <field name="model">pms.project</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="project_status=='completed'" decoration-danger="project_status == 'cancelled'"
+                  decoration-warning="project_status == 'on_hold'" decoration-primary="project_status == 'maintenance'">
+                <field name="project_name"/>
+                <field name="project_description"/>
+                <field name="project_budget" optional="show"/>
+                <field name="priority"/>
+                <field name="currency_id"/>
+                <field name="project_start_date"/>
+                <field name="project_end_date"/>
+                <field name="project_manager"/>
+                <field name="project_manager_experience" optional="show"/>
+                <field name="project_status" widget="badge" decoration-success="project_status=='completed'"
+                       decoration-danger="project_status == 'cancelled'"
+                       decoration-warning="project_status == 'on_hold'"
+                       decoration-primary="project_status == 'maintenance'"/>
+            </tree>
+        </field>
+    </record>
+    <!--    calender view-->
+    <record id="view_pms_project_calendar" model="ir.ui.view">
+        <field name="name">pms.project.calendar</field>
+        <field name="model">pms.project</field>
+        <field name="arch" type="xml">
+            <calendar string="Projects Information" date_start="project_start_date" date_stop="project_end_date"
+                      color="project_name">
+                <field name="project_name"/>
+                <field name="project_manager"/>
+            </calendar>
+        </field>
+    </record>
+    <!--    graph view-->
+    <record id="view_pms_project_graph" model="ir.ui.view">
+        <field name="name">pms.project.graph</field>
+        <field name="model">pms.project</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="project_name"/>
+                <field name="project_start_date"/>
+                <field name="project_end_date"/>
+                <field name="project_manager"/>
+            </graph>
+        </field>
+    </record>
+    <!--    search view-->
+    <record id="view_pms_project_search" model="ir.ui.view">
+        <field name="name">pms.project.search</field>
+        <field name="model">pms.project</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="filter_for_argent_project" string="Argent Project" domain="[('priority','=','4')]"/>
+                <filter name="filter_for_completed_project" string="Completed Project" domain="[('project_status','=','completed')]"/>
+                <group expand="1" string="Group by">
+                    <filter name="grop_by_priority" string="Grop By Priority Of Project"
+                            context="{'group_by':'priority'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="action_pms_project" model="ir.actions.act_window">
+        <field name="name">projects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pms.project</field>
+        <field name="view_mode">tree,form,calendar,graph</field>
+    </record>
+    <menuitem id="menu_pms_project" name="Project List" parent="menu_pms_project_master"
+              action="action_pms_project"/>
+</odoo>

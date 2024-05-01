@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- form view -->
+	<record id="view_inventory_product_form" model="ir.ui.view">
+		<field name="name">inventory.product.form</field>
+		<field name="model">inventory.product</field>
+		<field name="arch" type="xml">
+			<form string="Product Details">
+				<sheet>
+					<group>
+						<group>
+							<field name="product_name" />
+							<field name="product_price" />
+							<field name="product_category" />
+						</group>
+						<group>
+							<field name="product_description" />
+							<field name="product_quantity" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<!-- tree view -->
+	<record id="view_inventory_product_tree" model="ir.ui.view">
+		<field name="name">inventory.product.tree</field>
+		<field name="model">inventory.product</field>
+		<field name="arch" type="xml">
+			<tree string="Products Details">
+				<field name="product_name" />
+				<field name="product_price" />
+				<field name="product_category" />
+				<field name="product_description" />
+				<field name="product_quantity" />
+			</tree>
+		</field>
+	</record>
+	<!-- search view -->
+	<record id="view_inventory_product_search" model="ir.ui.view">
+		<field name="name">inventory.product.search</field>
+		<field name="model">inventory.product</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="product_name" />
+				<field name="product_price" />
+				<field name="product_category" />
+				<field name="product_description" />
+				<field name="product_quantity" />
+				<filter name="digital_filter" string="Digital" domain="[('product_category','=','digital')]" />
+				<!-- <separator/>  for and operator default is or operator -->
+				<filter name="not_digital_filter" string="Not Digital" domain="[('product_category','=','notdigital')]" />
+				<group expand="0" string="Group By">
+					<filter name="group_by_category" string="Category" context="{'group_by':'product_category'}" />
+				</group>
+				<searchpanel>
+					<field name="product_category" string="Categories" enable_counters="1" />
+				</searchpanel>
+			</search>
+		</field>
+	</record>
+	<!-- Action created for product -->
+	<record id="action_inventory_product" model="ir.actions.act_window">
+		<field name="name">Product</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">inventory.product</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	<menuitem id="menu_inventory_product" name="Product list" parent="menu_inventory_product_master" action="action_inventory_product" />
+</odoo>

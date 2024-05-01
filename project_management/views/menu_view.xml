@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+            id="menu_pms_root"
+            name="Project Management"
+            web_icon="project_management,./static/description/icon.png"
+    />
+    <menuitem
+            id="menu_pms_emp_master"
+            name="Employee"
+            parent="menu_pms_root"
+            sequence="10"
+     />
+    <menuitem
+            id="menu_pms_team_master"
+            name="Teams"
+            parent="menu_pms_root"
+            sequence="20"
+
+     />
+    <menuitem
+            id="menu_pms_project_master"
+            name="Projects"
+            parent="menu_pms_root"
+            sequence="30"
+    />
+    <menuitem
+            id="menu_pms_task_master"
+            name="Tasks"
+            parent="menu_pms_root"
+            sequence="40"
+    />
+     <menuitem
+            id="menu_pms_expriment_master"
+            name="Expriment"
+            parent="menu_pms_root"
+            sequence="50"
+    />
+ </odoo>

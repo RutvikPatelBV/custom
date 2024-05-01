@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+      <!--    form view-->
+    <record id="view_inventory_order_form" model="ir.ui.view">
+        <field name="name">inventory.order.form</field>
+        <field name="model">inventory.order</field>
+        <field name="arch" type="xml">
+            <form string="Order Detail">
+                <sheet>
+                    <group>
+                        <field name="product"  />
+                        <field name="order_date"/>
+                        <field name="order_quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="view_inventory_order_tree" model="ir.ui.view">
+        <field name="name">inventory.order.tree</field>
+        <field name="model">inventory.order</field>
+        <field name="arch" type="xml">
+            <tree string="Orders Details">
+                <field name="product"/>
+                <field name="order_date"/>
+                <field name="order_quantity"/>
+            </tree>
+        </field>
+    </record>
+    <!--Action-->
+
+    <record id="action_inventory_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">inventory.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+            id="menu_inventory_order"
+            name="Orders Details"
+            parent="menu_inventory_order_master"
+            action="action_inventory_order"/>
+</odoo>

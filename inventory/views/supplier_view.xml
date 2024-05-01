@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    form view-->
+    <record id="view_inventory_supplier_form" model="ir.ui.view">
+        <field name="name">inventory.supplier.form</field>
+        <field name="model">inventory.supplier</field>
+        <field name="arch" type="xml">
+            <form string="Supplier Detail">
+                <sheet>
+                    <group>
+                        <field name="supplier_name"/>
+                        <field name="supplier_contact"/>
+                        <field name="supplier_email"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--    tree view-->
+    <record id="view_inventory_supplier_tree" model="ir.ui.view">
+        <field name="name">inventory.supplier.tree</field>
+        <field name="model">inventory.supplier</field>
+        <field name="arch" type="xml">
+            <tree string="supplier Details">
+                <field name="supplier_name"/>
+                <field name="supplier_contact"/>
+                <field name="supplier_email"/>
+            </tree>
+        </field>
+    </record>
+    <!--Action-->
+
+    <record id="action_inventory_supplier" model="ir.actions.act_window">
+        <field name="name">Suppliers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">inventory.supplier</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+            id="menu_inventory_supplier"
+            name="Suppliers Details"
+            parent="menu_inventory_supplier_master"
+            action="action_inventory_supplier"/>
+</odoo>

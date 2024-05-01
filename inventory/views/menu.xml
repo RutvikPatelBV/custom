@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+            id="menu_inventory_management_root"
+            name="Invnetory Management"
+            web_icon="inventory,static/description/icon.png"
+    />
+    <menuitem 
+            id="menu_inventory_product_master"
+            name="Products"
+            parent="menu_inventory_management_root"
+    />
+    <menuitem
+            id="menu_inventory_warehouse_master"
+            name="Warehouses"
+            parent="menu_inventory_management_root"
+    />
+    <menuitem
+            id="menu_inventory_shipment_master"
+            name="Shipments"
+            parent="menu_inventory_management_root"/>
+    <menuitem
+            id="menu_inventory_supplier_master"
+            name="Suppliers"
+            parent="menu_inventory_management_root"/>
+    <menuitem
+            id="menu_inventory_order_master"
+            name="Orders"
+            parent="menu_inventory_management_root"/>
+
+</odoo>
