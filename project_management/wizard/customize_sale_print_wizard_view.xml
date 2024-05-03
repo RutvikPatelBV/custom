@@ -7,7 +7,9 @@
             <field name="arch" type="xml">
                 <form string="Change Project Priority">
                     <group>
-                        <field name="priority"/>
+                        <field name="order_lines"/>
+<!--                        <field name="priority"/>-->
+<!--                        <field name="active_id"/>-->
                     </group>
                     <footer>
                         <button class="btn-primary"
