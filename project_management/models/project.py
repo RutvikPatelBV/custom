@@ -32,6 +32,7 @@ class Project(models.Model):
     project_manager_experience=fields.Integer(related='project_manager.emp_experience' , string="Project Manager Experience" ,   readonly=True)
     no_of_team=fields.Integer(string='No Of Team Working' , compute='find_no_of_team')
     display_name=fields.Char(compute='_compute_display_name')
+    team_ids=fields.One2many('pms.team','assigned_project_id',string='Teams')
     # project_manager_experience = fields.Integer(string="Project Manager Experience", readonly=True)
 
     # @api.onchange('project_manager')
@@ -67,6 +68,7 @@ class Project(models.Model):
             vals['project_ref_id']=self.env['ir.sequence'].next_by_code('pms.project_seq') or _("New")
         res=super(Project,self).create(vals)
         return res
+
     def action_open_team_from_project(self):
         return {
             'type': 'ir.actions.act_window',

@@ -13,5 +13,3 @@
     <menuitem id="menu_pms_designer_employee" name="Designer" parent="menu_pms_emp_master"
               action="action_pms_designer_employee"/>
 </odoo>
-
-

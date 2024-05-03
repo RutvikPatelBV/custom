@@ -12,6 +12,7 @@
         "data/data.xml",
         "data/data2.xml",
         "wizard/cahnge_project_priority_wizard_view.xml",
+        "wizard/customize_sale_print_wizard_view.xml",
         "views/menu_view.xml",
         "views/employee_view.xml",
         "views/project_view.xml",
@@ -22,5 +23,6 @@
         "views/designer_emp_view.xml",
         "views/task_view.xml",
         "views/expriment_view.xml",
+        "report/project_qweb_report.xml",
     ]
 }

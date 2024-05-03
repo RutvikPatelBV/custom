@@ -74,6 +74,8 @@ class SaleOrder(models.Model):
                 if not line.is_available:
                     raise ValidationError("One or more products in the order are not available in sufficient quantity.")
         return res
+    def button_method_name(self):
+        pass
 class StockPickingInherite(models.Model):
     _inherit = 'stock.picking'
     nick_name = fields.Char(string="Nick Name2" , related='sale_id.nick_name')
@@ -83,16 +85,18 @@ class SaleOrderLineInherit(models.Model):
     _inherit = 'sale.order.line'
 
     custom_name = fields.Char(string="custom name")
-    is_available = fields.Boolean(string="Is Available", compute="_compute_available_or_not" , invisible=True)
+    is_available = fields.Boolean(string="Is Available", compute="_compute_available_or_not" )
 
     @api.depends('product_uom_qty', 'order_id.partner_id')
     def _compute_available_or_not(self):
         for rec in self:
             product = rec.product_id
+            print('>>>>>>>>>>>>>>>>>>>>>>p',product)
             if product:
                 product_tmpl_id = product.product_tmpl_id
-                qty_available = self.env['product.template'].browse(product_tmpl_id.id).qty_available
-                rec.is_available = rec.product_uom_qty <= qty_available
+                print('>>>>>>>>>>>>>>>>>>>ptid',product_tmpl_id)
+                virtual_available = self.env['product.template'].browse(product_tmpl_id.id).virtual_available
+                rec.is_available = rec.product_uom_qty <= virtual_available
             else:
                 rec.is_available = False
 

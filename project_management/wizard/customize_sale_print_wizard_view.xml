@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="customize_sale_print_wizard_form" model="ir.ui.view">
+            <field name="name">customize.sale.print.wizard.form</field>
+            <field name="model">customize.sale.print.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Change Project Priority">
+                    <group>
+                        <field name="priority"/>
+                    </group>
+                    <footer>
+                        <button class="btn-primary"
+                                name="print_report"
+                                type="object"
+                                string="Print"/>
+                        <button string="Discard" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_customize_sale_print_wizard" model="ir.actions.act_window">
+            <field name="name">customize sale order print</field>
+            <field name="res_model">customize.sale.print.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="customize_sale_print_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

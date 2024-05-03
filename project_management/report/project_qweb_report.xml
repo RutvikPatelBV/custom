@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="project_qweb_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <style>
+                            .font-medium{
+                            font-size:20px;
+                            color:#03AED2;
+                            }
+                            .flex-container{
+                            display:flex;
+                            justify-content:space-between;
+                            }
+                        </style>
+                        <div class="page">
+                            <div>
+                                <h1 style="text-align:center; font-size:40px; color:#03AED2; font-weight: 700;">
+                                    <span t-esc="o.project_name"/>
+                                </h1>
+                                <h1 style="text-align:end; font-size:40px;">
+                                    <span t-esc="o.project_ref_id"/>
+                                </h1>
+                                <ul style="font-weight: 700;">
+                                    <div style="display: inline-block; vertical-align: top; margin-right: 120px;">
+                                        <li>
+                                            <strong class="font-medium">Project Name:</strong>
+                                            <span t-esc="o.project_name"/>
+                                        </li>
+                                        <li>
+                                            <strong class="font-medium">Project Start Date:</strong>
+                                            <span t-esc="o.project_start_date"/>
+
+                                        </li>
+                                        <li>
+                                            <strong class="font-medium">Project Budget:</strong>
+                                            <span t-esc="o.project_budget"/>
+                                            <span t-esc="o.currency_id.symbol"/>
+
+                                        </li>
+                                        <li>
+                                            <strong class="font-medium">Project Manager:</strong>
+                                            <span t-esc="o.project_manager.emp_name"/>
+
+                                        </li>
+                                    </div>
+                                    <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
+                                        <li>
+                                            <strong class="font-medium">Project Description:</strong>
+                                            <span t-esc="o.project_description"/>
+
+                                        </li>
+                                        <li>
+                                            <strong class="font-medium">Project End Date:</strong>
+                                            <span t-esc="o.project_end_date"/>
+
+                                        </li>
+                                        <li>
+                                            <strong class="font-medium">Project Status:</strong>
+                                            <span t-esc="o.project_status"/>
+
+                                        </li>
+                                        <li>
+                                            <strong class="font-medium">Project Manager Experience:</strong>
+                                            <span t-esc="o.project_manager_experience"/>
+                                            Year
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+                            <div>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Team Name</th>
+                                            <th>Team Members</th>
+                                        </tr>
+                                    </thead>
+                                    <t t-foreach="o.team_ids" t-as="d">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span t-field="d.team_name"/>
+                                                </td>
+                                                <td>
+                                                    <t t-foreach="o.team_ids.team_member_ids" t-as="e">
+                                                        <span t-field="e.emp_name"/>
+                                                        (<span t-field="e.emp_role"/>)
+                                                        <br/>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </t>
+                                </table>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="action_project_qweb_report_id" model="ir.actions.report">
+            <field name="name">Project Report</field>
+            <field name="model">pms.project</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">project_management.project_qweb_report_template</field>
+            <field name="report_file">project_management.project_qweb_report_template</field>
+            <!--            <field name="print_report_name">'Badge - %s' % (object.name).replace('/', '')</field>-->
+            <field name="binding_model_id" ref="model_pms_project"/>
+            <field name="binding_type">report</field>
+        </record>
+
+                <template id="new_custom_report_saleorder_document_inherit_sale_stock" inherit_id="sale.report_saleorder_document">
+                    <xpath expr="//t[@t-call='web.external_layout']/t[@t-set='address']/div[@t-field='doc.partner_id']" position="before">
+                       <strong>Nick Name : </strong><span t-field="doc.nick_name"/>
+                    </xpath>
+                    <xpath expr="//div/table/thead/tr/th[@name='th_description']" position="after">
+                        <th name="th_customname" class="text-end">Custom Name</th>
+                    </xpath>
+                    <xpath expr="//div/table/tbody/t/tr/t[@t-if='not line.display_type']/td[@name='td_name']" position="after">
+                        <td name="th_customname" class="text-end"><span t-esc="line.custom_name"/></td>
+                    </xpath>
+                </template>
+    </data>
+</odoo>
+

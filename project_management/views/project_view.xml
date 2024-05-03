@@ -44,9 +44,20 @@
                         <h2>
                             <field name="priority" widget="priority" string="Project Priority"/>
                         </h2>
-                          <button name="%(action_change_project_priority)d" string="Change project priority" type="action"
-                             class="oe_highlight"/>
+                        <button name="%(action_change_project_priority)d" string="Change project priority" type="action"
+                                class="oe_highlight"/>
                     </div>
+                    <notebook>
+                        <page string="Team Records">
+                            <field name="team_ids">
+                                <tree editable="bottom">
+                                    <field name="team_name"/>
+                                    <field name="team_member_ids" widget="many2many_tags"/>
+                                    <field name="project_manager"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -106,7 +117,8 @@
         <field name="arch" type="xml">
             <search>
                 <filter name="filter_for_argent_project" string="Argent Project" domain="[('priority','=','4')]"/>
-                <filter name="filter_for_completed_project" string="Completed Project" domain="[('project_status','=','completed')]"/>
+                <filter name="filter_for_completed_project" string="Completed Project"
+                        domain="[('project_status','=','completed')]"/>
                 <group expand="1" string="Group by">
                     <filter name="grop_by_priority" string="Grop By Priority Of Project"
                             context="{'group_by':'priority'}"/>

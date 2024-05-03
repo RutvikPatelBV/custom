@@ -47,6 +47,9 @@
                 <field name="enable_cancel" string="cancel disable"/>
                 <field name="nick_name"/>
             </xpath>
+            <xpath expr="//form/header/button[@name='action_cancel']" position="after">
+                <button name="%(action_customize_sale_print_wizard)d" type="action" string="Print"/>
+            </xpath>
         </field>
     </record>
     <record id="view_pms_expriment_inherit_two" model="ir.ui.view">
@@ -57,7 +60,7 @@
             <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='tax_id']"
                    position="after">
                 <field name="custom_name" string="custom name"/>
-                <field name="is_available" invisible="1"/>
+                <field name="is_available" />
             </xpath>
         </field>
     </record>
