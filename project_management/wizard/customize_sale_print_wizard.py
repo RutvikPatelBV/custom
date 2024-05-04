@@ -7,18 +7,14 @@ class CustomizeSalePrintWizard(models.TransientModel):
     order_lines = fields.Many2many(
         comodel_name='sale.order.line',
         string="Order Lines",
-    )
-
-    @api.model
-    def default_get(self, fields):
-        res = super(CustomizeSalePrintWizard, self).default_get(fields)
-        active_id = self._context.get('active_id')
-        if active_id:
-            sale_order = self.env['sale.order'].browse(active_id)
-            res['order_lines'] = [(6, 0, sale_order.order_line.ids)]
-        return res
+     )
+    order_id=fields.Many2one('sale.order', 'order_id')
 
 
     def print_report(self):
-           pass
+           return  self.print_customize_qweb_report()
+
+    def print_customize_qweb_report(self):
+        print(self.order_id)
+        return self.env.ref('sale.action_report_saleorder').report_action(self.order_id)
 

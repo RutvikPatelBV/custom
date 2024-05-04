@@ -5,11 +5,10 @@
             <field name="name">customize.sale.print.wizard.form</field>
             <field name="model">customize.sale.print.wizard</field>
             <field name="arch" type="xml">
-                <form string="Change Project Priority">
+                <form string="Customize Sale Print Wizard Form">
                     <group>
-                        <field name="order_lines"/>
-<!--                        <field name="priority"/>-->
-<!--                        <field name="active_id"/>-->
+                        <field name="order_id" />
+                        <field name="order_lines" domain="[('order_id','=',order_id)]"/>
                     </group>
                     <footer>
                         <button class="btn-primary"
@@ -28,6 +27,7 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="customize_sale_print_wizard_form"/>
             <field name="target">new</field>
+            <field name="context">{'default_order_id':active_id}</field>
         </record>
     </data>
 </odoo>
