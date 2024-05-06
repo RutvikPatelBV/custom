@@ -24,5 +24,6 @@
         "views/task_view.xml",
         "views/expriment_view.xml",
         "report/project_qweb_report.xml",
+        "report/custom_sale_qweb_report.xml",
     ]
 }
