@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="commission_qweb_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                         <style>
+                            .font-medium{
+                            font-size:20px;
+                            color:black;
+                            }
+                        </style>
+                        <t t-set="commission_total" t-value="0"/>
+                        <div class="page">
+                            <div>
+                                <h2 class="mt-4">
+                                    <span>Sale Person :</span>
+                                    <span t-field="o.user_id.name"/>
+                                </h2>
+                                <div>
+                                    <ul style="font-weight: 500;">
+                                        <div style="display: inline-block; vertical-align: top; margin-right: 120px;">
+                                            <li>
+                                                <strong class="font-medium">Start Date:</strong>
+                                                <span t-esc="o.start_date"/>
+                                            </li>
+                                            <li>
+                                                <strong class="font-medium">Total Orders:</strong>
+                                                <span class="text-nowrap">
+                                                    <span t-esc="o.total_order"
+                                                          class="oe_currency_value">
+                                                        22
+                                                    </span>
+                                                </span>
+                                            </li>
+                                        </div>
+                                        <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
+                                            <li>
+                                                <strong class="font-medium">End Date:</strong>
+                                                <span t-esc="o.end_date"/>
+                                            </li>
+                                            <li>
+                                                <strong class="font-medium">Total Commission:</strong>
+                                                <span class="text-nowrap">$
+                                                    <span t-esc="o.total_commission"
+                                                          class="oe_currency_value">
+                                                        22,137.50
+                                                    </span>
+                                                </span>
+
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                                <br/>
+                                <hr/>
+                                <table class="table table-sm o_main_table table-borderless mt-4">
+                                    <thead class="display: table-row-group">
+                                        <tr>
+                                            <th class="text-start">Name</th>
+                                            <th class="text-end">Order Date</th>
+                                            <th class="text-end">Customer</th>
+                                            <th class="text-end">Percentage</th>
+                                            <th class="text-end">Total Amount</th>
+                                            <th class="text-end">Commission</th>
+                                        </tr>
+                                    </thead>
+                                    <t t-foreach="o.sale_order_ids" t-as="d">
+                                        <t t-set="commission_total" t-value=" (commission_total + d.commission)"/>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-start">
+                                                    <span t-field="d.name"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.date_order"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.partner_id.name"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.percent_commission"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.amount_total"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.commission"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </t>
+                                </table>
+                                <div id="right-elements"
+                                     t-attf-class="#{'col-5' if report_type != 'html' else 'col-12 col-md-5'} ms-5 d-inline-block float-end">
+                                    <div id="total" class="clearfix row">
+                                        <div class="ms-auto">
+                                            <table class="table table-sm table-borderless"
+                                                   style="page-break-inside: avoid; position:relative;">
+                                                <tbody>
+                                                    <tr class="border-black o_total">
+                                                        <td>
+                                                            <strong>Total</strong>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <span class="text-nowrap">$
+                                                                <span t-esc="docs.total_commission"
+                                                                      class="oe_currency_value">
+                                                                    22,137.50
+                                                                </span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <record id="action_commission_qweb_report_id" model="ir.actions.report">
+            <field name="name">commission Report</field>
+            <field name="model">sale.commission</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">project_management.commission_qweb_report_template</field>
+            <field name="report_file">project_management.commission_qweb_report_template</field>
+            <!--            <field name="print_report_name">'Badge - %s' % (object.name).replace('/', '')</field>-->
+            <field name="binding_model_id" ref="model_sale_commission"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

@@ -36,4 +36,10 @@
             parent="menu_pms_root"
             sequence="50"
     />
+    <menuitem
+            id="menu_commission_master"
+            name="Commission"
+            parent="sale.sale_menu_root"
+            sequence="50"
+    />
  </odoo>

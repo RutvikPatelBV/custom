@@ -23,7 +23,9 @@
         "views/designer_emp_view.xml",
         "views/task_view.xml",
         "views/expriment_view.xml",
+        "views/sale_commission_view.xml",
         "report/project_qweb_report.xml",
         "report/custom_sale_qweb_report.xml",
+        "report/commission_qweb_report.xml",
     ]
 }

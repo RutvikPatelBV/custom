@@ -60,9 +60,9 @@
                                         </tr>
                                     </thead>
                                     <t t-foreach="o.order_lines" t-as="d">
-                                        <t t-set="total_amount" t-value="total_amount + d.price_subtotal"/>
-                                        <t t-set="price_tax" t-value="(price_tax + (d.price_subtotal*0.15))"/>
-                                        <t t-set="price_total" t-value="total_amount+price_tax"/>
+                                            <t t-set="total_amount" t-value="total_amount + d.price_subtotal"/>
+                                            <t t-set="price_tax" t-value="(price_tax + (d.price_subtotal*0.15))"/>
+                                            <t t-set="price_total" t-value="total_amount+price_tax"/>
                                         <tbody>
                                             <tr>
                                                 <td class="text-start">
@@ -108,7 +108,9 @@
                                                             <span  class="text-nowrap">Tax 15%</span>
                                                         </td>
                                                         <td class="text-end o_price_total">
+                                                            <span>$
                                                             <span t-esc="price_tax" class="text-nowrap" >$ 2,887.50</span>
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                     <tr class="border-black o_total">

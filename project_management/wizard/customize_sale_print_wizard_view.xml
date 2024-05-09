@@ -7,10 +7,10 @@
             <field name="arch" type="xml">
                 <form string="Customize Sale Print Wizard Form">
                     <group>
-                        <field name="order_id" />
-                        <field name="partner_id" />
-                        <field name="company_id" />
-                        <field name="partner_shipping_id" />
+                        <field name="order_id" readonly="1" />
+<!--                        <field name="partner_id" />-->
+<!--                        <field name="company_id" invisible="1"/>-->
+<!--                        <field name="partner_shipping_id" />-->
                         <field name="order_lines" domain="[('order_id','=',order_id)]"/>
                     </group>
                     <footer>
