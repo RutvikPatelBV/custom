@@ -11,8 +11,7 @@
                             color:black;
                             }
                         </style>
-                        <t t-set="commission_total" t-value="0"/>
-                        <div class="page">
+                         <div class="page">
                             <div>
                                 <h2 class="mt-4">
                                     <span>Sale Person :</span>
@@ -59,34 +58,34 @@
                                     <thead class="display: table-row-group">
                                         <tr>
                                             <th class="text-start">Name</th>
-                                            <th class="text-end">Order Date</th>
                                             <th class="text-end">Customer</th>
-                                            <th class="text-end">Percentage</th>
                                             <th class="text-end">Total Amount</th>
+                                            <th class="text-end">Order Date</th>
+                                            <th class="text-end">Percentage</th>
                                             <th class="text-end">Commission</th>
                                         </tr>
                                     </thead>
                                     <t t-foreach="o.sale_order_ids" t-as="d">
-                                        <t t-set="commission_total" t-value=" (commission_total + d.commission)"/>
-                                        <tbody>
+                                         <tbody>
                                             <tr>
                                                 <td class="text-start">
-                                                    <span t-field="d.name"/>
+                                                    <span t-field="d.number"/>
                                                 </td>
                                                 <td class="text-end">
-                                                    <span t-field="d.date_order"/>
+                                                    <span t-field="d.customer_id"/>
+                                                </td>
+
+                                                <td class="text-end">
+                                                    <span t-field="d.total_amount"/>
                                                 </td>
                                                 <td class="text-end">
-                                                    <span t-field="d.partner_id.name"/>
+                                                    <span t-field="d.create_date"/>
                                                 </td>
                                                 <td class="text-end">
-                                                    <span t-field="d.percent_commission"/>
+                                                    <span t-field="d.percentage"/>
                                                 </td>
                                                 <td class="text-end">
-                                                    <span t-field="d.amount_total"/>
-                                                </td>
-                                                <td class="text-end">
-                                                    <span t-field="d.commission"/>
+                                                    <span t-field="d.total_commission"/>
                                                 </td>
                                             </tr>
                                         </tbody>
