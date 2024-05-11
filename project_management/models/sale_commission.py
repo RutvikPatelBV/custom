@@ -77,6 +77,17 @@ class SaleOrder(models.Model):
     def _compute_commission(self):
         for rec in self:
             rec.commission = rec.amount_total * (rec.percent_commission / 100)
+    # def action_cancel(self):
+    #     if self.enable_cancel == 'no':
+    #         raise UserError(_("fist you need to enable cancel by selecting yes"))
+    def action_cancel(self):
+        sale_commission_online_obj = self.env['sale.commission.on.line']
+        lines_to_delete = sale_commission_online_obj.search([('number', '=', self.name)])
+        lines_to_delete.unlink()
+        print(self.name)
+        # lines_to_delete.unlink()
+        res = super()._action_cancel()
+        return res
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     # sale_order_ids = fields.One2many('sale.order', 'commission_id', string='Sale Orders',compute='calculate_orders')

@@ -65,8 +65,10 @@ class SaleOrder(models.Model):
     nick_name = fields.Char(string="Nick Name")
 
     def action_cancel(self):
-        if self.enable_cancel == 'no':
+        res = super()._action_cancel()
+        if self.enable_cancel == 'no' or '':
             raise UserError(_("fist you need to enable cancel by selecting yes"))
+        return res
     def action_confirm(self):
         res = super(SaleOrder, self).action_confirm()
         for order in self:
