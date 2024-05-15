@@ -9,6 +9,7 @@
     'depends': ['base', 'sale_management','sale'],
     'data': [
         "security/ir.model.access.csv",
+        "security/sale_commission_security.xml",
         "data/data.xml",
         "data/data2.xml",
         "wizard/cahnge_project_priority_wizard_view.xml",
