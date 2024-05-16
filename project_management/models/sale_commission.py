@@ -93,6 +93,15 @@ class ResPartner(models.Model):
     # sale_order_ids = fields.One2many('sale.order', 'commission_id', string='Sale Orders',compute='calculate_orders')
     percent_commission = fields.Integer(string='Percentage', default=16 , store=True)
     order_value = fields.Float(string='If Cart Value Above' , store=True)
+    sale_ids = fields.One2many('sale.order', 'partner_id', string='sales Details')
+    total=fields.Float(compute="_compute_total")
+    # is_vendor_category = fields.Boolean(string="Is Vendor Category", compute='_compute_is_vendor_category_field')
+    def _compute_total(self):
+        total=0
+        for item in self.sale_ids:
+            total=total+item.amount_total
+        self.total=round(total,2)
+
     def calculate_orders(self):
         if self.name:
             print(self.name)
@@ -102,3 +111,41 @@ class ResPartner(models.Model):
             self.sale_order_ids = [(6, 0, list_of_order.ids)]
         else:
             self.sale_order_ids = [(5, 0, 0)]
+    def print_mail(self):
+        template= self.env.ref('project_management.email_customer_template')
+        print(template)
+        # for rec in self:
+        #     template.send_mail(rec.id)
+        ctx = {
+            'default_model': 'res.partner',
+            'default_res_ids': self.ids,
+            'default_template_id': template if template else None,
+            'default_composition_mode': 'comment',
+            'mark_so_as_sent': True,
+            'default_email_layout_xmlid': 'mail.mail_notification_layout_with_responsible_signature',
+        }
+        return {
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'res_model': 'mail.compose.message',
+            'views': [(False, 'form')],
+            'view_id': False,
+            'target': 'new',
+            'context': ctx,
+        }
+    #THIS IS TEG BASED VENDOR FILTER FOR BUTTON
+    # @api.depends('category_id')
+    # def _compute_is_vendor_category_field(self):
+    #     teg_list=[]
+    #     for partner in self:
+    #         if partner.category_id:
+    #             for item in partner.category_id:
+    #                 print(item.name)
+    #                 if 'Vendor'in teg_list or 'Desk Manufacturers'  in teg_list or 'Office Supplies'in teg_list:
+    #                     partner.is_vendor_category=True
+    #                 elif not partner.is_vendor_category:
+    #                     partner.is_vendor_category = item.name in ['Vendor', 'Desk Manufacturers', 'Office Supplies']
+    #                 teg_list.append(item.name)
+    #                 print(teg_list)
+    #         else:
+    #             partner.is_vendor_category = False

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="customer_sale_qweb_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <style>
+                            .font-medium{
+                            font-size:20px;
+                            color:black;
+                            }
+                        </style>
+                        <div class="page">
+                            <div>
+                                <h2 class="mt-4">
+                                    <span>Customer Name :</span>
+                                    <span t-field="o.name"/>
+                                </h2>
+                                <div>
+                                    <ul style="font-weight: 500;">
+                                        <div style="display: inline-block; vertical-align: top; margin-right: 120px;">
+                                            <li>
+                                                <strong class="font-medium">Total Orders:</strong>
+                                                <span t-esc="o.sale_order_count"/>
+                                            </li>
+                                            <li>
+                                                <strong class="font-medium">Total Amount:</strong>
+                                                <span t-esc="o.total"/>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                                <br/>
+                                <div>
+                                    <h2>Order Details</h2>
+                                </div>
+                                <hr/>
+                                <table class="table table-sm o_main_table table-borderless mt-4 ">
+                                    <thead class="display: table-row-group">
+                                        <tr>
+                                            <th class="text-start">Number</th>
+                                            <th class="text-end">Order Date</th>
+                                            <th class="text-end">SalesPerson</th>
+                                            <th class="text-end">Invoice Status</th>
+                                            <th class="text-end">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <t t-foreach="o.sale_ids" t-as="d">
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-start">
+                                                    <span t-field="d.name"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.date_order"/>
+                                                </td>
+
+                                                <td class="text-end">
+                                                    <span t-field="d.user_id"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.invoice_status"/>
+                                                </td>
+                                                <td class="text-end">
+                                                    <span t-field="d.amount_total"/>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </t>
+                                </table>
+                                <div id="right-elements"
+                                     t-attf-class="#{'col-5' if report_type != 'html' else 'col-12 col-md-5'} ms-5 d-inline-block float-end">
+                                    <div id="total" class="clearfix row">
+                                        <div class="ms-auto">
+                                            <table class="table table-sm table-borderless"
+                                                   style="page-break-inside: avoid; position:relative;">
+                                                <tbody>
+                                                    <tr class="border-black o_total">
+                                                        <td>
+                                                            <strong>Total</strong>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <span class="text-nowrap">$
+                                                                <span t-esc="docs.total"
+                                                                      class="oe_currency_value">
+                                                                    22,137.50
+                                                                </span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="action_customer_sale_qweb_report_id" model="ir.actions.report">
+            <field name="name">Customer Sale Report</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">project_management.customer_sale_qweb_report_template</field>
+            <field name="report_file">project_management.customer_sale_qweb_report_template</field>
+            <!--            <field name="print_report_name">'Badge - %s' % (object.name).replace('/', '')</field>-->
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

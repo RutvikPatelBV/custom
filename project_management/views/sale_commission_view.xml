@@ -65,26 +65,27 @@
 
 
         <!--        ResPartner in customer commission -->
-        <record id="view_res_partner_add_commission_form" model="ir.ui.view" >
+        <record id="view_res_partner_add_commission_form" model="ir.ui.view">
             <field name="name">res.partner.add.commission.form</field>
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//form/sheet" position="before">
+                    <group>
+                        <field name="customer_rank" invisible="1"/>
+                    </group>
+                    <header>
+                        <button class="oe_highlight" name="print_mail" type="object" string="Send Mail"
+                                invisible="customer_rank == 0"/>
+                    </header>
+                </xpath>
                 <xpath expr="//notebook/page[@name='internal_notes']" position="after">
-                    <page name="commission_record" string="Commission Record" groups="sales_team.group_sale_salesman_all_leads">
+                    <page name="commission_record" string="Commission Record"
+                          groups="sales_team.group_sale_salesman_all_leads">
                         <group>
                             <field name="percent_commission"/>
                             <field name="order_value"/>
                         </group>
-                        <!--                        <field name="sale_order_ids">-->
-                        <!--                            <tree editable="bottom">-->
-                        <!--                                <field name="name"/>-->
-                        <!--                                <field name="date_order"/>-->
-                        <!--                                <field name="percent_commission"/>-->
-                        <!--                                <field name="commission"/>-->
-                        <!--                                <field name="amount_total"/>-->
-                        <!--                            </tree>-->
-                        <!--                        </field>-->
                     </page>
                 </xpath>
             </field>

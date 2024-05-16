@@ -12,6 +12,7 @@
         "security/sale_commission_security.xml",
         "data/data.xml",
         "data/data2.xml",
+        "data/customer_mail_template.xml",
         "wizard/cahnge_project_priority_wizard_view.xml",
         "wizard/customize_sale_print_wizard_view.xml",
         "views/menu_view.xml",
@@ -28,5 +29,6 @@
         "report/project_qweb_report.xml",
         "report/custom_sale_qweb_report.xml",
         "report/commission_qweb_report.xml",
+        "report/customer_sale_qweb_report.xml",
     ]
 }
