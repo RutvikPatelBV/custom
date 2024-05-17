@@ -15,6 +15,7 @@
         "data/customer_mail_template.xml",
         "wizard/cahnge_project_priority_wizard_view.xml",
         "wizard/customize_sale_print_wizard_view.xml",
+        "wizard/sale_report_xslx_wizard_view.xml",
         "views/menu_view.xml",
         "views/employee_view.xml",
         "views/project_view.xml",
