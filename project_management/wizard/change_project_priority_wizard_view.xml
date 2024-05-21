@@ -27,5 +27,15 @@
             <field name="view_id" ref="change_project_priority_wizard_form"/>
             <field name="target">new</field>
         </record>
+
+        <record id="action_change_project_priority_from_action_menu" model="ir.actions.act_window">
+            <field name="name">change project priority</field>
+            <field name="res_model">change.project.priority.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="change_project_priority_wizard_form"/>
+            <field name="binding_model_id" ref="model_pms_project"/>
+            <field name="binding_view_types">tree</field>
+            <field name="target">new</field>
+        </record>
     </data>
 </odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_project_report_sql_query_graph" model="ir.ui.view">
+            <field name="name">project.report.sql.query.graph</field>
+            <field name="model">pms.project.report.sql.query</field>
+            <field name="arch" type="xml">
+                <graph>
+                    <field name="project_name"/>
+                    <field name="project_start_date"/>
+                    <field name="project_end_date"/>
+                    <field name="no_of_team" type="measure"/>
+                    <field name="task_name" />
+                    <field name="task_status"/>
+                </graph>
+            </field>
+        </record>
+        <record id="view_project_report_sql_query_pivot" model="ir.ui.view">
+            <field name="name">project.report.sql.query.pivot</field>
+            <field name="model">pms.project.report.sql.query</field>
+            <field name="arch" type="xml">
+                <pivot>
+                     <field name="project_name"  type="row"/>
+                    <field name="task_name" />
+                    <field name="task_status"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="action_project_report_sql_query" model="ir.actions.act_window">
+        <field name="name">projects Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pms.project.report.sql.query</field>
+        <field name="view_mode">graph,pivot</field>
+    </record>
+    <menuitem id="menu_pms_project_report" name="Project Report" parent="menu_pms_project_master"
+              action="action_project_report_sql_query"/>
+    </data>
+</odoo>

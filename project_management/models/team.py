@@ -2,10 +2,11 @@ from odoo import fields,models,api
 class Team(models.Model):
 
     _name='pms.team'
-    _description='team deteils'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description='Team Deteils'
 
     team_name=fields.Char(string='Name',required=True)
-    team_member_ids=fields.Many2many('pms.employee',string="Team Member",required=True)
+    team_member_ids=fields.Many2many('pms.employee',string="Team Member",required=True , tracking=True)
     assigned_project_id=fields.Many2one('pms.project',string="Assigned Project")
     project_manager= fields.Many2one(related='assigned_project_id.project_manager', string='Project Manager', store=True)
     # @api.depends('assigned_project_ids.project_manager')

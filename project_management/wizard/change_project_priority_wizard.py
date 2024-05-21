@@ -9,5 +9,7 @@ class ChangeProjectPriorityWizard(models.TransientModel):
                                 string="Project Priority")
 
     def change_priority(self):
-        self.env['pms.project'].browse(self._context.get('active_id')).update({'priority': self.priority})
+        records=self.env['pms.project'].browse(self._context.get('active_ids'))
+        for rec in records:
+            rec.update({'priority': self.priority})
         return True

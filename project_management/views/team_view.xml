@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-     <!--    form view-->
+    <!--    form view-->
     <record id="view_pms_team_form" model="ir.ui.view">
         <field name="name">pms.team.form</field>
         <field name="model">pms.team</field>
@@ -16,6 +16,12 @@
                         </group>
                     </group>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"
+                           options="{'post_refresh': 'recipients'}"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
