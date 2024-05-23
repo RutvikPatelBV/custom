@@ -4,7 +4,6 @@ from odoo import api, fields, models
 class ProjectReportSqlQuery(models.Model):
     _name = "pms.project.report.sql.query"
     _description = "Project Report In Details"
-    _order = 'date desc'
 
     project_ref_id = fields.Char(string="Employee Id", required=True, copy=False, readonly=False,
                                  default=lambda self: _('New'))
@@ -47,11 +46,17 @@ class ProjectReportSqlQuery(models.Model):
         ('reopened', 'Reopened'),
         ('cancelled', 'Cancelled'),
     ], string='Task Status', default='new')
+
     # Define methods to construct SQL queries
     def _select(self):
         # Construct the SELECT part of the SQL query
         return """
-           pp.project_ref_id,
+            pp.id,
+            pp.create_uid,
+            pp.write_uid,
+            pp.create_date,
+            pp.write_date,
+            pp.project_ref_id,
             pp.project_status,
             pp.project_name,
             pp.project_description,
@@ -70,7 +75,7 @@ class ProjectReportSqlQuery(models.Model):
     def _from(self):
         return """
             pms_project pp LEFT JOIN pms_task pt
-            ON pt.related_project_id=pp.id
+            ON pt.related_project_id=pp.id 
         """
 
     def _where(self):
@@ -79,6 +84,7 @@ class ProjectReportSqlQuery(models.Model):
 
     def _group_by(self):
         return """
+            pp.id,
             pp.project_ref_id,
             pp.project_status,
             pp.project_name,

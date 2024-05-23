@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="project_report_xslx_wizard_form" model="ir.ui.view">
+            <field name="name">project.report.xslx.wizard.form</field>
+            <field name="model">project.xlsx.report</field>
+            <field name="arch" type="xml">
+                <form string="Project Excel Report Wizard">
+                    <footer>
+                        <button class="btn-primary"
+                                name="print_project_xlsx_report"
+                                type="object"
+                                string="Print"/>
+                        <button string="Discard" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!--        <record id="action_project_report_xslx_wizard" model="ir.actions.act_window">-->
+        <!--            <field name="name">Sale Excel Report</field>-->
+        <!--            <field name="res_model">project.xlsx.report</field>-->
+        <!--            <field name="view_mode">form</field>-->
+        <!--            <field name="view_id" ref="project_report_xslx_wizard_form"/>-->
+        <!--            <field name="target">new</field>-->
+        <!--        </record>-->
+        <record id="action_project_report_xlsx" model="ir.actions.server">
+            <field name="name">Generate Project Excel Report</field>
+            <field name="model_id" ref="model_project_xlsx_report"/>
+            <field name="state">code</field>
+            <field name="code">action = model.print_project_xlsx_report()</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_report_report_xslx" name="Get Project Excel Report" parent="menu_pms_project_master"
+                  action="action_project_report_xlsx" sequence="40"/>
+    </data>
+</odoo>

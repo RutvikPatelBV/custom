@@ -35,6 +35,7 @@
                         </group>
                         <group>
                             <field name="joining_date"/>
+                            <field name="emp_email"/>
                             <field name="emp_experience"/>
                         </group>
                     </group>
