@@ -1,5 +1,3 @@
-from datetime import timedelta
-
 from odoo import models, fields, api
 
 
@@ -52,105 +50,9 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
     percent_commission = fields.Integer(string='Percentage', default=16, readonly=True)
     commission = fields.Float(string='Commission', compute="_compute_commission")
-
+    # For Scheduler Which is sent monthly report
     @api.model
-    def monthly_sale_report(self):
-        # Get today's date
-        today = fields.Date.today()
 
-        # Calculate first day and last day of the current month
-        first_day_of_current_month = today.replace(day=1)
-        last_day_of_last_month = first_day_of_current_month - timedelta(days=1)
-        first_day_of_last_month = last_day_of_last_month.replace(day=1)
-
-        # Search for orders within the last month
-        orders = self.env['sale.order'].search([
-            ('date_order', '>=', first_day_of_last_month),
-            ('date_order', '<=', last_day_of_last_month)
-        ])
-
-        # Group orders by customer
-        sale_orders_dict = {}
-        for order in orders:
-            if order.user_id in sale_orders_dict:
-                sale_orders_dict[order.user_id].append(order)
-            else:
-                sale_orders_dict[order.user_id] = [order]
-
-        for sale, sale_orders in sale_orders_dict.items():
-            # Prepare email content
-            order_table = """
-            <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; margin: 20px 0; border: 1px solid #dddddd;">
-                <thead>
-                    <tr style="background-color: #4CAF50; color: white;">
-                        <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Order</th>
-                        <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Customer</th>
-                        <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Date</th>
-                        <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Amount</th>
-                        <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Invoice Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-            """
-
-            for order in sale_orders:
-                currency_symbol = order.currency_id.symbol or ''  # Fetch currency symbol
-                amount_with_symbol = "{} {}".format(currency_symbol,
-                                                    order.amount_total)  # Concatenate symbol with amount
-                order_table += """
-                    <tr style="background-color: #f9f9f9;">
-                        <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{}</td>
-                        <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{}</td>
-                        <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{}</td>
-                        <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{}</td>
-                        <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{}</td>
-                    </tr>
-                """.format(
-                    order.name,
-                    order.partner_id.name,
-                    order.date_order.date(),
-                    amount_with_symbol,
-                    dict(order._fields['invoice_status'].selection).get(order.invoice_status, '')
-                )
-
-            order_table += """
-                </tbody>
-            </table>
-            """
-            company_name = self.env.company.name
-            body_html = """
-                <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333; padding: 20px;">
-                    <p style="font-size: 18px; font-weight: bold; color: #4CAF50;">Dear {sale_name},</p>
-                    <p>Here is your monthly report:</p>
-                    {order_table}
-                    <p style="font-size: 16px;">Thank you for your continuous support.</p>
-                    <p style="font-size: 16px;">Best regards,</p>
-                    <p style="font-size: 16px; font-weight: bold;">{company_name}</p>
-                </div>
-            """.format(
-                sale_name=sale.name,
-                order_table=order_table,
-                company_name=company_name
-
-            )
-
-            # Create mail records
-            mail_values = {
-                'subject': "Sale Monthly Report",
-                'body_html': body_html,
-                'email_to': sale.email,
-            }
-            mail = self.env['mail.mail'].create(mail_values)
-
-            # Send email
-            mail.send()
-
-        # Update next call to the first day of the next month
-        nextcall_date = first_day_of_current_month + timedelta(days=32)
-        nextcall_date = nextcall_date.replace(day=1)
-        self.env['ir.cron'].search([('name', '=', 'Sale : Monthly Report')]).write({'nextcall': nextcall_date})
-
-        return True
     def action_confirm(self):
         sale_commission_online_obj = self.env['sale.commission.on.line']
         for order in self:
