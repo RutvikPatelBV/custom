@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="monthly_report_mail_template" model="mail.template">
+            <field name="name">Monthly Report Email Template</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="subject">Monthly Report</field>
+            <field name="email_from">odoobot@example.com</field>
+            <field name="email_to">{{ object.user_id.partner_id.email }}</field>
+            <field name="body_html" type="html">
+                <html>
+                    <head>
+                        <!-- CSS styles -->
+
+                    </head>
+                    <body>
+                        <!-- Email content -->
+                        <div class="container">
+                            <!-- Header -->
+                            <div class="header">
+                                <h1>Monthly Report</h1>
+                            </div>
+                            <!-- Content -->
+                            <div class="content">
+                                <p>Dear <t t-out="object.name"/>,
+                                </p>
+                                <p>Here is your monthly report:</p>
+                                <!-- End of Table -->
+                                <p>Thank you.</p>
+                            </div>
+                            <!-- Footer -->
+                            <div class="footer">
+                                <p>This is an automated email. Please do not reply.</p>
+                            </div>
+                        </div>
+                    </body>
+                </html>
+            </field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

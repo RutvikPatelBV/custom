@@ -182,55 +182,24 @@ class SaleOrder(models.Model):
 
         for sale, sale_orders in sale_orders_dict.items():
             # Prepare email content
-            order_table = """
-                    <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; margin: 20px 0; border: 1px solid #dddddd;">
-                        <thead>
-                            <tr style="background-color: #4CAF50; color: white;">
-                                <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Order</th>
-                                <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Customer</th>
-                                <th style="border: 1px solid #dddddd; text-align: left; padding: 12px;">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                    """
-            for order in sale_orders:
-                order_table += f"""
-                            <tr>
-                                <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{order.name}</td>
-                                <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{order.partner_id.name}</td>
-                                <td style="border: 1px solid #dddddd; text-align: left; padding: 12px;">{order.amount_total} {order.currency_id.symbol}</td>
-                            </tr>
-                        """
-            order_table += """
-                        </tbody>
-                    </table>
-                    """
-
-            email_content = f"""
-                        <p>Hello {sale.name},</p>
-                        <p>Please find attached the sales report for the last month.</p>
-                        <p>Sales Summary:</p>
-                        {order_table}
-                        <p>Best regards,<br>Your Company</p>
-                    """
-
             # Generate the report for the last month
             file_data = self.xlsx_report_generator(first_day_of_last_month, last_day_of_last_month,sale_orders)
             attachment_name = f'Sales_Report_{first_day_of_last_month}_to_{last_day_of_last_month}.xlsx'
 
             # Prepare and send the email
-            mail_values = {
-                'subject': f'Sales Report for {first_day_of_last_month} to {last_day_of_last_month}',
-                'body_html': email_content,
-                'email_to': sale.user_id.partner_id.email,
-                'attachment_ids': [(0, 0, {
-                    'name': attachment_name,
-                    'datas': base64.b64encode(file_data),
-                    'type': 'binary',
-                    'mimetype': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                })],
+            attachment_data = {
+                'name': attachment_name,
+                'datas': base64.b64encode(file_data),
+                'res_model': 'mail.compose.message',
+                'res_id': 0,
             }
-            mail = self.env['mail.mail'].create(mail_values)
-            mail.send()
+            mail_values = {
+                'email_to': sale.email,
+                'attachment_ids': [(0, 0, attachment_data)],
+            }
+            template = self.env.ref('project_management.monthly_report_mail_template')
+            if mail_values['email_to']==sale.email:
+                template.send_mail(sale.id, force_send=True,
+                                   email_values=mail_values)
 
 

@@ -60,15 +60,25 @@ class Employee(models.Model):
                                               ('emp_dob', '!=', None),
                                               ('emp_dob', 'like', f'%-{today.month:02d}-{today.day:02d}')])
         print(employee_with_birthday)
+
+        #old hardcorded logic
+
+
+        # for employee in employee_with_birthday:
+        #     print(employee)
+        #     print(employee.emp_name)
+        #     print(employee.emp_email)
+        #     self.env['mail.mail'].create({
+        #         'subject': "Happy Birthday!",
+        #         'body_html': f"<p>Happy Birthday, {employee.emp_name}!</p>",
+        #         'email_to': employee.emp_email,
+        #     }).send()
+
+
+        template=self.env.ref('project_management.birthday_wise_mail_template')
         for employee in employee_with_birthday:
-            print(employee)
-            print(employee.emp_name)
-            print(employee.emp_email)
-            self.env['mail.mail'].create({
-                'subject': "Happy Birthday!",
-                'body_html': f"<p>Happy Birthday, {employee.emp_name}!</p>",
-                'email_to': employee.emp_email,
-            }).send()
+                template.send_mail(employee.id, force_send=True)
+
 
     def find_how_many_team_no(self):
         self.emp_in_team = self.env['pms.team'].search_count([('team_member_ids.emp_id', '=', self.emp_id)])

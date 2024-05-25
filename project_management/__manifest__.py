@@ -13,6 +13,8 @@
         "data/data.xml",
         "data/data2.xml",
         "data/customer_mail_template.xml",
+        "data/birthday_wise_mail_template.xml",
+        "data/month_report_mail_template.xml",
         "data/birthday_wise.xml",
         "data/monthly_report.xml",
         "wizard/change_project_priority_wizard_view.xml",
