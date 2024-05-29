@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="licenced_company_tree_view" model="ir.ui.view">
+            <field name="name">practice.licenced.company.tree</field>
+            <field name="model">practice.licenced.company</field>
+            <field name="arch" type="xml">
+                <tree string="licenced_company">
+                    <field name='seq'/>
+                    <field name="name"/>
+                    <field name="associated_emp_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="licenced_company_act_window" model="ir.actions.act_window">
+            <field name="name">licenced_company</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.licenced.company</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="licenced_company" id="menu_licenced_company" parent="menu_practice_company_root" action="licenced_company_act_window"/>
+    </data>
+</odoo>

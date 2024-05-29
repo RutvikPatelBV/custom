@@ -1,0 +1,21 @@
+<odoo>
+    <menuitem
+            id="menu_practice_root"
+            name="Practice"
+    />
+    <menuitem
+            id="menu_practice_practice_root"
+            parent="menu_practice_root"
+            name="Employee"
+    />
+    <menuitem
+            id="menu_practice_company_root"
+            parent="menu_practice_root"
+            name="Company"
+    />
+    <menuitem
+            id="menu_practice_work_root"
+            parent="menu_practice_root"
+            name="Work"
+    />
+</odoo>

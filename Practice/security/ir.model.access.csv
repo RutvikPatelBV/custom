@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+practice_practice,access_practice_practice,Practice.model_practice_practice,base.group_user,1,1,1,1
+practice_company,access_practice_company,Practice.model_practice_company,base.group_user,1,1,1,1
+practice_work,access_practice_work,Practice.model_practice_work,base.group_user,1,1,1,1
+practice_work,access_practice_work,Practice.model_practice_work,base.group_user,1,1,1,1
+practice_licenced_company,access_practice_licenced_company,Practice.model_practice_licenced_company,base.group_user,1,1,1,1

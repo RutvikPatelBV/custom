@@ -51,8 +51,6 @@ class SaleOrder(models.Model):
     percent_commission = fields.Integer(string='Percentage', default=16, readonly=True)
     commission = fields.Float(string='Commission', compute="_compute_commission")
     # For Scheduler Which is sent monthly report
-    @api.model
-
     def action_confirm(self):
         sale_commission_online_obj = self.env['sale.commission.on.line']
         for order in self:

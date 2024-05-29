@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="company_form_view" model="ir.ui.view">
+            <field name="name">practice.company.form</field>
+            <field name="model">practice.company</field>
+            <field name="arch" type="xml">
+                <form string="company">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_open_work_from_company" type="object" class="oe_stat_button"
+                                    icon="fa-users">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Total Work</span>
+                                    <field name="work_count" class="o_stat_value"/>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <field name='seq'/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="associated_emp_ids" widget="one2many"/>
+                                <field name="is_licenced"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="company_tree_view" model="ir.ui.view">
+            <field name="name">practice.company.tree</field>
+            <field name="model">practice.company</field>
+            <field name="arch" type="xml">
+                <tree string="company">
+                    <field name='seq'/>
+                    <field name="name"/>
+                    <field name="associated_emp_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="company_act_window" model="ir.actions.act_window">
+            <field name="name">company</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.company</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="company" id="menu_company" parent="menu_practice_company_root" action="company_act_window"/>
+    </data>
+</odoo>

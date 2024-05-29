@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="work_form_view" model="ir.ui.view">
+            <field name="name">practice.work.form</field>
+            <field name="model">practice.work</field>
+            <field name="arch" type="xml">
+                <form string="work">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="work_to_company_id" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="work_tree_view" model="ir.ui.view">
+            <field name="name">practice.work.tree</field>
+            <field name="model">practice.work</field>
+            <field name="arch" type="xml">
+                <tree string="work">
+                    <field name="name"/>
+                    <field name="work_to_company_id" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="work_act_window" model="ir.actions.act_window">
+            <field name="name">work</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.work</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Work Details" id="menu_work" parent="menu_practice_work_root" action="work_act_window"/>
+    </data>
+</odoo>

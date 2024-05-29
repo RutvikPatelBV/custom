@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="practice_form_view" model="ir.ui.view">
+            <field name="name">practice.practice.form</field>
+            <field name="model">practice.practice</field>
+            <field name="arch" type="xml">
+                <form string="Practice">
+                    <sheet>
+                        <button name="send_mail" class="oe_highlight" type="object" string="Send Mail"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name='seq'/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="dob"/>
+                                <field name="age"/>
+                                <field name="email"/>
+                                <field name="associated_company_id" widget="many2one_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="practice_tree_view" model="ir.ui.view">
+            <field name="name">practice.practice.tree</field>
+            <field name="model">practice.practice</field>
+            <field name="arch" type="xml">
+                <tree string="Practice">
+                    <field name="seq"/>
+                    <field name="name"/>
+                    <field name="dob"/>
+                    <field name="age"/>
+                    <field name="email"/>
+                    <field name="associated_company_id" widget="many2one_tags"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="practice_act_window" model="ir.actions.act_window">
+            <field name="name">Practice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.practice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Employee Menu" id="practice_menu" parent="menu_practice_practice_root"
+                  action="practice_act_window"/>
+
+    </data>
+</odoo>
