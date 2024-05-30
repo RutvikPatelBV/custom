@@ -15,6 +15,7 @@
              "views/company_view.xml",
              "views/work_view.xml",
              "views/licenced_company_view.xml",
+             "views/equipment_view.xml",
              ],
     'demo': [''],
     'application': True,

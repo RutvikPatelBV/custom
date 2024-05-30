@@ -18,4 +18,9 @@
             parent="menu_practice_root"
             name="Work"
     />
+    <menuitem
+            id="menu_practice_equipment_root"
+            parent="menu_practice_root"
+            name="Equipment"
+    />
 </odoo>

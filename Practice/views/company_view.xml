@@ -24,9 +24,22 @@
                         <group>
                             <group>
                                 <field name="name"/>
-                                <field name="associated_emp_ids" widget="one2many"/>
+                                <field name="associated_emp_ids" widget="many2many_tags"/>
                                 <field name="is_licenced"/>
                             </group>
+                            <notebook>
+                                <page string="Allocated Equipment">
+                                    <field name="allocated_equipments">
+                                        <tree editable="bottom">
+                                            <field name="name_of_equipment"/>
+                                            <field name="price_per_unit"/>
+                                            <field name="qty"/>
+                                            <field name="total_amount"/>
+                                            <field name="is_paid"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
                         </group>
                     </sheet>
                 </form>

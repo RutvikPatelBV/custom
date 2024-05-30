@@ -60,4 +60,12 @@ class Practice(models.Model):
             'target': 'new',
             'context': ctx,
         }
-
+    # Not have any use but for removing error of not find _get_customer_info()
+    def _get_customer_information(self):
+        # Implement this method to return the necessary customer information
+        # Example implementation:
+        return {
+            'customer_name': self.name,
+            'customer_email': self.email,
+            'associated_company': self.associated_company_id.name if self.associated_company_id else ''
+        }

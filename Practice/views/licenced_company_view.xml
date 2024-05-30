@@ -8,7 +8,7 @@
                 <tree string="licenced_company">
                     <field name='seq'/>
                     <field name="name"/>
-                    <field name="associated_emp_ids" widget="many2many_tags"/>
+<!--                    <field name="associated_emp_ids" widget="many2many_tags"/>-->
                 </tree>
             </field>
         </record>
@@ -26,6 +26,6 @@
             </field>
         </record>
 
-        <menuitem name="licenced_company" id="menu_licenced_company" parent="menu_practice_company_root" action="licenced_company_act_window"/>
+        <menuitem name="Licenced Company" id="menu_licenced_company" parent="menu_practice_company_root" action="licenced_company_act_window"/>
     </data>
 </odoo>

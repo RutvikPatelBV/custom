@@ -12,6 +12,5 @@ class LicencedCompany(models.Model):
         inverse_name='associated_company_id',
         string='Associated Employee',
         required=False)
-    display_name=fields.Char(compute="_compute_display_name")
-    work_count=fields.Integer(string="Work Count", compute="compute_work")
-    is_licenced=fields.Boolean(string="Have Licence")
+    # work_count=fields.Integer(string="Work Count", compute="compute_work")
+    # is_licenced=fields.Boolean(string="Have Licence")

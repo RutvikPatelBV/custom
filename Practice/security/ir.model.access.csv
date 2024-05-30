@@ -4,3 +4,6 @@ practice_company,access_practice_company,Practice.model_practice_company,base.gr
 practice_work,access_practice_work,Practice.model_practice_work,base.group_user,1,1,1,1
 practice_work,access_practice_work,Practice.model_practice_work,base.group_user,1,1,1,1
 practice_licenced_company,access_practice_licenced_company,Practice.model_practice_licenced_company,base.group_user,1,1,1,1
+practice_equipment,access_practice_equipment,Practice.model_practice_equipment,base.group_user,1,1,1,1
+practice_equipment_allocate_line,access_practice_equipment_allocate_line,Practice.model_practice_equipment_allocate_line,base.group_user,1,1,1,1
+practice_equipment_order,access_practice_equipment_order,Practice.model_practice_equipment_order,base.group_user,1,1,1,1
