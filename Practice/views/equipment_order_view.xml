@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="equipment_order_form_view" model="ir.ui.view">
+            <field name="name">practice.equipment.order.form</field>
+            <field name="model">practice.equipment.order</field>
+            <field name="arch" type="xml">
+                <form string="Equipment_order">
+                    <header>
+                        <button name="action_confirm" class="oe_highlight" type="object" string="Confirm" invisible="order_status == 'delivery'" />
+                         <field name="order_status" widget="statusbar"  nolabel="1" readonly="1" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name='seq'/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="company_name"/>
+                                <field name="name_of_equipment"/>
+                                <field name="grand_total"/>
+
+                            </group>
+                            <group>
+                                <field name="qty"/>
+                                <field name="price_per_unit"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="equipment_order_tree_view" model="ir.ui.view">
+            <field name="name">practice.equipment.order.tree</field>
+            <field name="model">practice.equipment.order</field>
+            <field name="arch" type="xml">
+                <tree string="Equipment_order">
+                    <field name="company_name"/>
+                    <field name="name_of_equipment"/>
+                    <field name="price_per_unit"/>
+                    <field name="qty"/>
+                    <field name="grand_total"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="equipment_order_act_window" model="ir.actions.act_window">
+            <field name="name">equipment_order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.equipment.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Equipment Order List" id="menu_equipment_order" parent="menu_practice_equipment_root"
+                  action="equipment_order_act_window"/>
+    </data>
+</odoo>

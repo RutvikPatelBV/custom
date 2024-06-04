@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="equipment_delivery_form_view" model="ir.ui.view">
+            <field name="name">practice.equipment.delivery.form</field>
+            <field name="model">practice.equipment.delivery</field>
+            <field name="arch" type="xml">
+                <form string="Equipment_delivery">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name_company"/>
+                                <field name="equipment_name"/>
+                                <field name="grand_total"/>
+                            </group>
+                            <group>
+                                <field name="qty"/>
+                                <field name="price_per_unit"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="equipment_delivery_tree_view" model="ir.ui.view">
+            <field name="name">practice.equipment.delivery.tree</field>
+            <field name="model">practice.equipment.delivery</field>
+            <field name="arch" type="xml">
+                <tree string="Equipment_delivery">
+                    <field name="name_company"/>
+                    <field name="equipment_name"/>
+                    <field name="price_per_unit"/>
+                    <field name="qty"/>
+                    <field name="grand_total"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="equipment_delivery_act_window" model="ir.actions.act_window">
+            <field name="name">equipment_delivery</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.equipment.delivery</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Equipment delivery List" id="menu_equipment_delivery" parent="menu_practice_equipment_root"
+                  action="equipment_delivery_act_window"/>
+    </data>
+</odoo>

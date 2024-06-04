@@ -15,3 +15,7 @@ class Equipment(models.Model):
             vals['seq'] = self.env['ir.sequence'].next_by_code('equipment.seq') or _("New")
         res = super(Equipment, self).create(vals)
         return res
+
+    # def check(self):
+    #     products = self.env['product.product'].search_read([('list_price', '>', 100)], ['name', 'list_price'])
+    #     print(len(products))

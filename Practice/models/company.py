@@ -102,6 +102,6 @@ class Company(models.Model):
                 if rec.qty>rec.name_of_equipment.qty:
                     raise ValidationError(_(f"{rec.name_of_equipment.name} is Only {rec.name_of_equipment.qty} available"))
 
-        @api.onchange('field_name')
-        def onchange_method(self):
-            self.field_name = ''
+        # @api.onchange('field_name')
+        # def onchange_method(self):
+        #     self.field_name = ''

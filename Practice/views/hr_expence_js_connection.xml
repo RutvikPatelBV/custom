@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_hr_expence_js_connection" model="ir.ui.view">
+        <field name="name">view.hr.expence.js.connection</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_expenses_analysis_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">hr_expense_list_view</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+<!--<?xml version="1.0" encoding="utf-8" ?>-->
+<!--<odoo>-->
+<!--    <record id="view_hr_expence_js_connection" model="ir.ui.view">-->
+<!--        <field name="name">view.hr.expence.js.connection</field>-->
+<!--        <field name="model">hr.expense</field>-->
+<!--        <field name="inherit_id" ref="hr_expense.hr_expense_view_expenses_analysis_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//tree" position="attributes">-->
+<!--                <attribute name="js_class">hr_expense_inherited_list_view</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--</odoo>-->

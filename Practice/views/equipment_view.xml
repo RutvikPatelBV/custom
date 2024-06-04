@@ -11,6 +11,7 @@
                             <h1>
                                 <field name='seq'/>
                             </h1>
+<!--                            <button name="check" type="object" string="check"/>-->
                         </div>
                         <group>
                             <group>
