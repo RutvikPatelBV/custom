@@ -5,3 +5,4 @@ from . import licenced_company
 from . import equipment
 from . import equipment_order
 from . import  equipment_delivery
+from . import hr_expence

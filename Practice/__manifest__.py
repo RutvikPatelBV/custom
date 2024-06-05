@@ -18,11 +18,14 @@
              "views/equipment_view.xml",
              "views/equipment_order_view.xml",
              "views/equipment_delivery_view.xml",
-             "views/hr_expence_js_connection.xml",
+             "report/hr_expense_qweb_report.xml",
              ],
     'assets': {
         'web.assets_backend': [
             'Practice/static/src/**/*',
+            # 'Practice/static/src/views/hr_expense_custom_button.xml',
+            # 'Practice/static/src/views/hr_expense_custom_button.xml',
+
         ]
     },
 
