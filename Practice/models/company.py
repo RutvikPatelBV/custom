@@ -86,7 +86,7 @@ class Company(models.Model):
         total_amount=fields.Integer(string="Total Amount" , compute="_compute_total_amount")
         is_paid=fields.Selection( [('paid', 'Payment Done'), ('unpaid', 'Payment Remaining')] ,string="Payment Status")
         is_paid=fields.Selection( [('paid', 'Payment Done'), ('unpaid', 'Payment Remaining')] ,string="Payment Status")
-
+        context_pass=fields.Boolean(string="Context Pass")
         @api.depends('qty')
         def _compute_total_amount(self):
             for rec in self:
@@ -94,6 +94,7 @@ class Company(models.Model):
                     rec.total_amount=rec.qty*rec.price_per_unit
                 else:
                     rec.total_amount=0
+
 
 
         @api.onchange('qty')

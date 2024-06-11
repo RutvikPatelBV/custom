@@ -23,9 +23,11 @@ class EquipmentOrder(models.Model):
 
     @api.depends('qty')
     def _compute_total(self):
+        self.env['practice.equipment'].with_context(amount=True)
         for rec in self:
             if rec.qty:
                 rec.grand_total = rec.qty * rec.price_per_unit
+
             else:
                 rec.grand_total = 0
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+        <t t-name="Practice.website_home_page_inherit"
+           t-inherit="website.homepage_editor_welcome_message"
+           t-inherit-mode="extension" owl="1">
+            <xpath expr="//p[contains(@class, 'lead d-none d-md-block')]" position="after">
+                <div class="btn-group flex-grow-1 mb-1">
+                    <button type="button" class="btn btn-secondary btn-block" id="redirect_to_contact_us" >
+                        <i class="fa fa-user"/>
+                        Go to Contact Us
+                    </button>
+                </div>
+            </xpath>
+        </t>
+</template>

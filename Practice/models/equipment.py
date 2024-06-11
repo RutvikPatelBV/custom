@@ -14,6 +14,7 @@ class Equipment(models.Model):
         if vals.get('seq', _("New")) == _("New"):
             vals['seq'] = self.env['ir.sequence'].next_by_code('equipment.seq') or _("New")
         res = super(Equipment, self).create(vals)
+        print(self.env.context.get('amount'))
         return res
 
     # def check(self):

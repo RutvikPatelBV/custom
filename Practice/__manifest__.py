@@ -6,7 +6,7 @@
     'description': 'For Practice Access Rights',
     'author': 'RP',
     'license': '',
-    'depends': ['base', 'mail', 'web', 'hr_expense', 'purchase', 'website'],
+    'depends': ['base', 'mail', 'web', 'hr_expense', 'purchase', 'website', 'sale','planning'],
     'data': ['security/ir.model.access.csv',
              'data/data.xml',
              'data/new_template.xml',
@@ -19,20 +19,25 @@
              "views/equipment_order_view.xml",
              "views/equipment_delivery_view.xml",
              "views/purchase_portal_sidebar_inherite.xml",
+             # "views/website_home_inherite_try.xml",
              "report/hr_expense_qweb_report.xml",
              ],
     'assets': {
         'web.assets_backend': [
-            # 'Practice/static/src/**/*',
             'Practice/static/src/components/hr_expense_custom_button_action.js',
+            'Practice/static/src/components/planning_custom_button_action.js',
+            'Practice/static/src/components/website_home.js',
+            # 'Practice/static/src/controllers/sale_order_form_custom_button.js',
+            # 'Practice/static/src/controllers/sale_order_list_custom_button.js',
             'Practice/static/src/views/hr_expense_custom_button.xml',
-
+            'Practice/static/src/views/website_home_inherite_try.xml',
+            # 'Practice/static/src/views/sale_order_custom_button.xml',
+            # 'Practice/static/src/views/sale_order_custom_button_connection.xml',
         ],
         'web.assets_frontend': [
             'Practice/static/src/js/purchase_portal_sidebar_inheritance.js',
         ],
     },
-
     'demo': [''],
     'application': True,
     'installable': True,

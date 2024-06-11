@@ -3,8 +3,8 @@ import publicWidget from "@web/legacy/js/public/public_widget";
 import PortalSidebar from '@portal/js/portal_sidebar';
 
 PortalSidebar.include({
-    selector: ".o_portal_purchase_sidebar",
-    template: "purchase.portal_my_home_menu_purchase",
+//    selector: ".o_portal_purchase_sidebar",
+//    template: "purchase.portal_my_home_menu_purchase",
 
     init: function (parent) {
         this._super.apply(this, arguments);
@@ -23,6 +23,9 @@ PortalSidebar.include({
             element.style.backgroundColor = '#E1AFD1';
             element.style.borderTopLeftRadius = '20px';
             element.style.borderBottomLeftRadius = '20px';
+            element.addEventListener("click", (event) => {
+                console.log("Jay Shree Ram")
+                    });
         } else {
             console.warn("Element with class 'col-lg-3 col-xl-4 d-print-none' not found");
         }
