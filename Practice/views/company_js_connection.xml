@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_sale_order_form_custom_button_connection" model="ir.ui.view">
-        <field name="name">view_sale_order_form_js_connection</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
+    <record id="view_company_form_custom_button_connection" model="ir.ui.view">
+        <field name="name">view_company_form_js_connection</field>
+        <field name="model">practice.company</field>
+        <field name="inherit_id" ref="Practice.company_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//form" position="attributes">
-                <attribute name="js_class">custom_button_form_view</attribute>
+                <attribute name="js_class">company_button_form_view</attribute>
             </xpath>
         </field>
     </record>
     <!--    having missing template error-->
-<!--        <record id="view_sale_order_list_custom_button_connection" model="ir.ui.view">-->
-<!--            <field name="name">view_sale_order_list_js _connection</field>-->
+<!--        <record id="view_company_list_custom_button_connection" model="ir.ui.view">-->
+<!--            <field name="name">view_company_list_js _connection</field>-->
 <!--            <field name="model">sale.order</field>-->
 <!--            <field name="inherit_id" ref="sale.view_quotation_tree"/>-->
 <!--            <field name="arch" type="xml">-->

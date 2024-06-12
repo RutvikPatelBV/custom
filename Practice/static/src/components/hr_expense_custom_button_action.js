@@ -9,7 +9,6 @@ patch(ExpenseListController.prototype, {
         console.log(this)
         const selectedRecords = this.model.root.selection.map((datapoint) => datapoint.resId);
         console.log('Selected Record IDs:', selectedRecords);
-
         if (!selectedRecords.length) {
             this.notification.add('Please select at least one record.', {
                 title: 'No records selected',

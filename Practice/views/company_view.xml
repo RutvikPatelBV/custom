@@ -5,7 +5,7 @@
             <field name="name">practice.company.form</field>
             <field name="model">practice.company</field>
             <field name="arch" type="xml">
-                <form string="company">
+                <form string="company" js_class="company_button_form_view">
                     <sheet>
                         <div class="oe_button_box" name="button_box">
                             <button name="action_open_work_from_company" type="object" class="oe_stat_button"
