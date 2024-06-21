@@ -141,11 +141,29 @@ class Employee(models.Model):
         res = super(Employee, self).create(vals)
         return res
 
+    # def use_group_read(self):
+    #     domain = [('emp_gender', '=', 'male')]
+    #     groupby = ['emp_role', 'emp_country']
+    #     fields = ['emp_name', 'emp_id']
+    #     summary_data = self.env['pms.employee'].read_group(domain, groupby, fields)
+    #     print(summary_data)
+    #     for data in summary_data:
+    #         print(data)
+
     def use_group_read(self):
-        domain = [('emp_gender', '=', 'male')]
-        groupby = ['emp_role', 'emp_country']
-        fields = ['emp_name', 'emp_id']
+        # Define the domain to filter the records (optional)
+        domain = []
+
+        # Specify the fields to group by
+        groupby = ['emp_role']
+
+        # Specify the fields to be retrieved and aggregated
+        fields = ['emp_role', 'emp_name', 'emp_id']
+
+        # Call the read_group method
         summary_data = self.env['pms.employee'].read_group(domain, groupby, fields)
-        print(summary_data)
+
+        # Output the result
         for data in summary_data:
             print(data)
+

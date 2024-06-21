@@ -1,0 +1,75 @@
+// Define a color palette
+$primary-color: #3498db;
+$secondary-color: #5dade2;
+$background-light: #ecf9fe;
+$background-medium: #cae6f8;
+$background-dark: #aed6f1;
+$text-color: #2c3e50;
+$white: #ffffff;
+
+
+.pos .pos-topheader {
+    height: 80px;
+    background: $background-medium !important;
+    color: $text-color !important;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.rightpane {
+    background: $white !important;
+}
+
+.pos .pos-logo {
+    height: 80%;
+}
+
+.order-summary {
+    background: $secondary-color !important;
+    color: $text-color !important;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.pay-order-button, .validation {
+    background: $primary-color !important;
+    color: $white !important;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pay-order-button:hover, .validation:hover {
+    background: darken($primary-color, 10%) !important;
+}
+
+.order-container {
+    background: $background-light !important;
+}
+
+.orderline.selected {
+    background: $background-dark !important;
+    border-color: $primary-color !important;
+}
+
+.product {
+    color: $primary-color !important;
+    border-color: $primary-color !important;
+}
+
+.popup-error .footer .button {
+    background: $primary-color !important;
+    color: $white !important;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup-error .footer .button:hover {
+    background: darken($primary-color, 10%) !important;
+}

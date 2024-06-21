@@ -6,7 +6,7 @@
     'description': 'For Practice Access Rights',
     'author': 'RP',
     'license': '',
-    'depends': ['base', 'mail', 'web', 'hr_expense', 'purchase', 'website', 'sale','planning'],
+    'depends': ['base', 'mail', 'web', 'hr_expense', 'purchase', 'website', 'sale','planning','point_of_sale'],
     'data': ['security/ir.model.access.csv',
              'data/data.xml',
              'data/new_template.xml',
@@ -36,6 +36,11 @@
             'Practice/static/src/views/sale_order_custom_button.xml',
             'Practice/static/src/views/company_controll_pannel_button.xml',
             'Practice/static/src/views/sale_order_custom_button_connection.xml',
+        ],
+        'point_of_sale._assets_pos':[
+            'Practice/static/src/pos/**/*.js',
+            'Practice/static/src/pos/**/*.xml',
+            'Practice/static/src/pos/**/*.scss',
         ],
         'web.assets_frontend': [
             'Practice/static/src/js/purchase_portal_sidebar_inheritance.js',

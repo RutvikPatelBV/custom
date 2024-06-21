@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates>
-    <t t-name="Practice.company_custom_button_form" t-inherit="web.FormView" t-inherit-mode="extension">
+    <t t-name="Practice.company_custom_button_form" t-inherit="web.FormView" >
         <xpath expr="//t[@t-set-slot='layout-buttons']" position="inside">
             <button type="button" class="d-none d-md-block btn btn-secondary" t-on-click="custom_button_action">
                 company details

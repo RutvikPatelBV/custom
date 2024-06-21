@@ -16,10 +16,11 @@ class CompanyController extends FormController {
 }
 
 // Define a custom form view with the new controller
+CompanyController.template="Practice.company_custom_button_form"
 export const customButtonFormViewCompany = {
     ...formView,
     Controller: CompanyController,
-    buttonTemplate: "Practice.company_custom_button_form",
+//    buttonTemplate: "Practice.company_custom_button_form",
 };
 
 // Register the custom form view
