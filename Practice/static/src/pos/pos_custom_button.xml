@@ -5,13 +5,24 @@
             <i class="fa fa-minus-square" role="img" aria-label="Refund" title="Clear Selected"/>
             Clear Selected
         </button>
-        <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder" t-on-click="onClickClearAll">
+        <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder"
+                t-on-click="onClickClearAll">
             <i class="fa fa-trash me-1" role="img" aria-label="Refund" title="Clear All"/>
             Clear All
         </button>
-<!--        <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder" t-on-click="onClick">-->
-<!--            <i class="fa fa-superpowers me-1" role="img" aria-label="Refund" title="Test"/>-->
-<!--            Test-->
-<!--        </button>-->
+        <!--        <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder" t-on-click="onClick">-->
+        <!--            <i class="fa fa-superpowers me-1" role="img" aria-label="Refund" title="Test"/>-->
+        <!--            Test-->
+        <!--        </button>-->
     </t>
+    <t t-name="point_of_sale.OrderCount"
+
+       t-inherit="point_of_sale.OrderWidget"
+
+       t-inherit-mode="extension">
+
+    <xpath expr="//div[hasclass('order-summary')]" position="inside">
+    <span>Total item : </span> <span t-esc="state.qty" class="tax"/>
+    </xpath>
+   </t>
 </templates>

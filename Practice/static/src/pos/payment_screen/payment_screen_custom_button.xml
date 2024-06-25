@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-    <t t-name="pos_button.PaymentScreenButtons"
+    <t t-name="pos_button.PaymentScreenButtonsOrde"
 
        t-inherit="point_of_sale.PaymentScreenButtons"
 
@@ -12,7 +12,7 @@
         t-on-click="onClick">
 
 <i class="fa fa-money me-2"/>Custom Button
-
+    <span t-esc="state.value"/>
 </button>
 
 </xpath>
