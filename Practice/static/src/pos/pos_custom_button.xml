@@ -10,10 +10,7 @@
             <i class="fa fa-trash me-1" role="img" aria-label="Refund" title="Clear All"/>
             Clear All
         </button>
-        <!--        <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder" t-on-click="onClick">-->
-        <!--            <i class="fa fa-superpowers me-1" role="img" aria-label="Refund" title="Test"/>-->
-        <!--            Test-->
-        <!--        </button>-->
+
     </t>
     <t t-name="point_of_sale.OrderCount"
 
@@ -22,7 +19,20 @@
        t-inherit-mode="extension">
 
     <xpath expr="//div[hasclass('order-summary')]" position="inside">
-    <span>Total item : </span> <span t-esc="state.qty" class="tax"/>
+    <span>Total item : </span>
+        <span t-esc="state.qty" class="tax"/>
     </xpath>
+   </t>
+    <t t-name="point_of_sale.AddNotesButton">
+         <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder" t-on-click="onAddItemNote">
+                    <i class="fa fa-solid fa-clipboard me-1" role="img" aria-label="Refund" title="Test"/>
+            Add item notes
+        </button>
+   </t>
+    <t t-name="point_of_sale.CustomDiscountButton">
+         <button class="control-button o_sale_order_button btn btn-light rounded-0 fw-bolder" t-on-click="onCustomDiscount">
+                    <i class="fa fa-solid fa-percent" role="img" aria-label="Refund" title="Test"/>
+            Overall Discount
+        </button>
    </t>
 </templates>

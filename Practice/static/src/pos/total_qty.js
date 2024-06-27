@@ -9,9 +9,8 @@ patch(OrderWidget.prototype, {
     setup() {
         // Call the original setup method
         super.setup();
-
         // Initialize state with useState
-        this.state = useState({ qty: 0 });
+        this.state = useState({ qty: 0,custom_discount:0 });
 
         // Function to update the quantity
         const updateQuantity = () => {
@@ -21,7 +20,7 @@ patch(OrderWidget.prototype, {
         };
 
         // Use onMounted to update the quantity when the component is first mounted
-        onMounted(() => {F
+        onMounted(() => {
             updateQuantity();
         });
 
