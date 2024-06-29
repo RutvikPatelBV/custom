@@ -12,6 +12,7 @@ class AddNotes extends Component {
     static template = "point_of_sale.AddNotesButton";
 
     setup() {
+        super.setup()
         this.popup = useService("popup");
         this.pos = useService("pos");
         console.log('hello world');

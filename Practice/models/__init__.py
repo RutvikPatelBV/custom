@@ -7,3 +7,4 @@ from . import equipment_order
 from . import  equipment_delivery
 from . import hr_expence
 from . import pos_order
+from . import  pos_discount

@@ -13,37 +13,22 @@ class CustomDiscount extends Component {
     setup() {
         this.popup = useService("popup");
         this.pos = useService("pos");
+        this.orm = useService("orm");
         console.log('hello world');
     }
     async onCustomDiscount() {
+            const result = await this.orm.call("ir.config_parameter", "get_param", ["practice.custom_discount"]);
+            const order = this.pos.get_order()
+            const custom_discount = parseFloat(result);
+            console.log(custom_discount)
+
         const selectedLines = this.pos.get_order().get_orderlines();
-        if (!selectedLines) {
-            this.popup.add(ErrorPopup, {
-                title: _t("OrderLine is not selected"),
-                body: _t("Please select an order first!"),
-            });
-            return;
-        }
-
-        const { confirmed, payload: inputNote } = await this.popup.add(NumberPopup, {
-            startingValue: selectedLines[0].get_discount(),
-            title: _t("Add Customer Discount %"),
-            placeholder:_t("Add Discount Amount Here..."),
-        });
-
-        if (confirmed) {
-        if (inputNote >= 100 || inputNote <=0 || !Number(inputNote)){
-        this.popup.add(ErrorPopup, {
-                title: _t("You can not give discount value 0 or 100"),
-                body: _t("Please Enter valid value!"),
-            });
-            return;
-        }
+        order.discounted_order=true
         for (let selectedLine of  selectedLines){
-            selectedLine.set_discount(inputNote);
+            selectedLine.set_discount(custom_discount);
             }
         }
-    }
+
 };
 
 ProductScreen.addControlButton({

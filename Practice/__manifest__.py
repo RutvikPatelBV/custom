@@ -22,6 +22,7 @@
              "views/company_js_connection.xml",
              "views/purchase_portal_sidebar_inherite.xml",
              "views/pos_order_new_note.xml",
+             "views/pos_discount_add_config.xml",
              "report/hr_expense_qweb_report.xml",
              ],
     'assets': {
