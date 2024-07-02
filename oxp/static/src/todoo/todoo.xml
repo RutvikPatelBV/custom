@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+<t t-name="oxp.Todoo">
+  <div class="o-action">
+    <div class="o-control-panel d-flex align-items-center">
+       <button class="btn btn-primary btn-sm m-2" t-on-click="addNewList">
+        New List
+      </button>
+    </div>
+      <div class="o-content d-flex align-items-start p-1">
+      <t t-foreach="lists" t-as="list" t-key="list.id">
+        <Todolist name="list.name"/>
+      </t>
+    </div>
+  </div>
+</t>
+
+</templates>
