@@ -7,7 +7,7 @@
                <div class = "big-text">Note:
                <t t-esc='props.data.new_note'/>
                                </div>
-           </t>
+           </t>1
        </xpath>
    </t>
 </templates>
