@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="duplicate_sale_order_form_view" model="ir.ui.view">
+            <field name="name">practice.duplicate.sale.order.form</field>
+            <field name="model">practice.duplicate.sale.order</field>
+            <field name="arch" type="xml">
+                <form string="duplicate_sale_order" js_class="duplicate_sale_order_button_form_view">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="duplicate_sale_order_tree_view" model="ir.ui.view">
+            <field name="name">practice.duplicate.sale.order.tree</field>
+            <field name="model">practice.duplicate.sale.order</field>
+            <field name="arch" type="xml">
+                <tree string="duplicate_sale_order">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="duplicate_sale_order_act_window" model="ir.actions.act_window">
+            <field name="name">duplicate_sale_order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.duplicate.sale.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="duplicate_sale_order" id="menu_duplicate_sale_order" parent="menu_practice_duplicate_sale_order_root" action="duplicate_sale_order_act_window"/>
+    </data>
+</odoo>

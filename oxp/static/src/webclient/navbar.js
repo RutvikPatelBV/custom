@@ -4,5 +4,7 @@ import { Component } from "@odoo/owl";
 
 export class Navbar extends Component {
   static template = "oxp.Navbar";
-  static props={currentApp : String,}
+  static props={currentApp : String,
+                 apps: Array,
+                 selectApp: Function,}
 }

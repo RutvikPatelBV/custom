@@ -8,3 +8,6 @@ from . import  equipment_delivery
 from . import hr_expence
 from . import pos_order
 from . import  pos_discount
+from . import duplicate_sale_order
+from . import pos_config_location
+from . import  pos_config_inherit

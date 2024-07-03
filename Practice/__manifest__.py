@@ -23,6 +23,8 @@
              "views/purchase_portal_sidebar_inherite.xml",
              "views/pos_order_new_note.xml",
              "views/pos_discount_add_config.xml",
+             "views/duplicate_sale_order_view.xml",
+             "views/pos_config_location_view.xml",
              "report/hr_expense_qweb_report.xml",
              ],
     'assets': {

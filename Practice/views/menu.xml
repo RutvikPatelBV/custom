@@ -23,4 +23,9 @@
             parent="menu_practice_root"
             name="Equipment"
     />
+    <menuitem
+            id="menu_practice_duplicate_sale_order_root"
+            parent="menu_practice_root"
+            name="duplicate sale order"
+    />
 </odoo>

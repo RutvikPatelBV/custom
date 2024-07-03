@@ -9,6 +9,7 @@ class ResConfigSettings(models.TransientModel):
 
     # pos.config fields
     custom_discount  = fields.Float(string = "Overall Discount", config_parameter='practice.custom_discount')
+
     # pos_discount_product_id = fields.Many2one('product.product', compute='_compute_pos_discount_product_id', store=True, readonly=False)
     #
     # @api.depends('company_id', 'pos_module_pos_discount', 'pos_config_id')

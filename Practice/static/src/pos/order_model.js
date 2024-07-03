@@ -8,6 +8,7 @@ patch(Order.prototype, {
         super.setup(...arguments);
         this.new_note = this.new_note || "";
         this.discounted_order = false
+        this.location=this.location || "";
     },
 
     export_as_JSON() {
@@ -15,6 +16,7 @@ patch(Order.prototype, {
         if (json) {
             json.new_note = this.new_note;
             json.discounted_order = this.discounted_order;
+            json.location = this.location;
         }
         return json;
     },
@@ -23,6 +25,7 @@ patch(Order.prototype, {
         super.init_from_JSON(...arguments);
         this.new_note = json.new_note;
         this.discounted_order = json.discounted_order;
+        this.location = json.location;
     },
 
     getNewNote() {

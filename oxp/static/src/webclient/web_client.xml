@@ -2,10 +2,8 @@
 <templates xml:space="preserve">
 
 <t t-name="oxp.WebClient">
-  <Navbar currentApp="'todoo'"/>
-  <div class="p-3">
-    <Todoo />
-  </div>
+  <Navbar apps="apps" currentApp="state.currentApp.id" selectApp.bind="selectApp"/>
+  <t t-component="state.currentApp.Component"/>
 </t>
 
 </templates>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="pos_config_location_form_view" model="ir.ui.view">
+            <field name="name">practice.pos.config.location.form</field>
+            <field name="model">practice.pos.config.location</field>
+            <field name="arch" type="xml">
+                <form string="pos_config_location" js_class="pos_config_location_button_form_view">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pos_config_location_tree_view" model="ir.ui.view">
+            <field name="name">practice.pos.config.location.tree</field>
+            <field name="model">practice.pos.config.location</field>
+            <field name="arch" type="xml">
+                <tree string="pos_config_location">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="pos_config_location_act_window" model="ir.actions.act_window">
+            <field name="name">pos_config_location</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">practice.pos.config.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new ModelTitle.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="POS Location" id="menu_pos_config_location" parent="point_of_sale.menu_point_config_product" action="pos_config_location_act_window"/>
+    </data>
+</odoo>
