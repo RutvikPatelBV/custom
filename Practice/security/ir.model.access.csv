@@ -11,3 +11,4 @@ practice_equipment_delivery,access_practice_equipment_delivery,Practice.model_pr
 practice_equipment_delivery,access_practice_equipment_delivery,Practice.model_practice_equipment_delivery,base.group_user,1,1,1,1
 practice_duplicate_sale_order,access_practice_duplicate_sale_order,Practice.model_practice_duplicate_sale_order,base.group_user,1,1,1,1
 practice_pos_config_location,access_practice_pos_config_location,Practice.model_practice_pos_config_location,base.group_user,1,1,1,1
+sale_approval,access_sale_approval,Practice.model_sale_approval,base.group_user,1,1,1,1

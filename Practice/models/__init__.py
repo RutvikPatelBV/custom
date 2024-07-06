@@ -11,3 +11,4 @@ from . import  pos_discount
 from . import duplicate_sale_order
 from . import pos_config_location
 from . import  pos_config_inherit
+from . import sale_approval

@@ -18,7 +18,7 @@
                     <div class="col wide p-2">Location Name</div>
                 </div>
                 <t t-foreach="this.locations.value" t-as="location" t-key="location.id">
-                    <div class="order-row" t-on-click="() => this.clickLocation(location)">
+                    <div class="order-row-two" t-on-click="() => this.clickLocation(location)">
                         <div class="col wide p-2">
                             <div>
                                 <t t-esc="location.name"/>

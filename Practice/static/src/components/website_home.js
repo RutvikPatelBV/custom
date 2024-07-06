@@ -14,5 +14,6 @@ patch(WebsitePreview.prototype, {
     },
     async customAction() {
         console.log("Jay Shree Ram");
-    }
+    },
+
 });

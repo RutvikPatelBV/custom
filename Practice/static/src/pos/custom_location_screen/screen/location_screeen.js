@@ -14,7 +14,6 @@ export class CustomerLocationScreen extends Component {
 
         // Initialize states
         this.locations = useState({ value: [] });
-        this.selectedLocation = useState({ value: null });
 
         // Fetch locations when the component is about to start
         onWillStart(async () => {
@@ -51,13 +50,10 @@ export class CustomerLocationScreen extends Component {
         const current_order=this.pos.get_order()
         current_order.location=location.name
         console.log(current_order.location)
-        this.selectedLocation.value = location;
         this.pos.showScreen('ProductScreen');
     }
 
-    get selectedLocationName() {
-        return this.selectedLocation.value ? this.selectedLocation.value.name : 'Customer Location';
-    }
+
 }
 
 // Register the component

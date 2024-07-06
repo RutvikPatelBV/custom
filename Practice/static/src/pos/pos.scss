@@ -74,7 +74,17 @@ $white: #ffffff;
     background: darken($primary-color, 10%) !important;
 }
 .big-text {
-    font-size: 24px; /* Adjust the size as needed */
+    font-size: 16px; /* Adjust the size as needed */
     font-weight: bold; /* Optional: makes the text bold */
     line-height: 1.5; /* Optional: improves readability */
+    color: $primary-color !important;
 }
+.order-row-two:hover {
+    color: white;
+    background-color:  $primary-color !important;
+}
+.order-container{
+    .pe-none{
+        background: white !important;
+        }
+    }

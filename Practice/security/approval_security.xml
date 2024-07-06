@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+     <record id="approval_access" model="ir.module.category">
+        <field name="name">Approval Sale Order Access</field>
+    </record>
+    <record id="approval_access_edit" model="ir.module.category">
+        <field name="name">Approval Access</field>
+        <field name="parent_id" ref="approval_access"/>
+    </record>
+     <record id="group_sale_manager_from_approve" model="res.groups">
+        <field name="name">Sale Manager Approve Access</field>
+        <field name="category_id" ref="approval_access_edit"/>
+    </record>
+</odoo>
