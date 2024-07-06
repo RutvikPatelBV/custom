@@ -24,6 +24,6 @@ class SaleOrder(models.Model):
     def approve_order(self):
         print("aprrove")
         super(SaleOrder, self).action_confirm()
-        
+
 
 
