@@ -6,7 +6,7 @@
     'description': """
         This module defines a custom controller to handle form submissions and create sale orders.
     """,
-    'author': 'Your Name',
+    'author': 'Rutvik Patel',
     'depends': ['base', 'sale', 'website'],
     'data': [
           # Assuming you have a template file for your form

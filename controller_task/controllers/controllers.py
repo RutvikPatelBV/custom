@@ -1,7 +1,6 @@
 from odoo import http
-from odoo.http import request
-
-
+from odoo.http import request,Response
+from werkzeug.exceptions import  Forbidden
 class CustomSaleOrderController(http.Controller):
 
     @http.route('/create_sale_order', type='json', auth="public", methods=['POST'])
@@ -12,8 +11,7 @@ class CustomSaleOrderController(http.Controller):
         order_lines = data.get('order_lines', [])
 
         if not partner_id or not order_lines:
-            return {"error": "Missing partner_id or order_lines"}
-
+            return Forbidden("Partner ID and order lines are required.")
         order_vals = {
             'partner_id': partner_id,
             'order_line': [(0, 0, {
