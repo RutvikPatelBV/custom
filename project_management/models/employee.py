@@ -68,7 +68,7 @@ class Employee(models.Model):
         #     print(employee)
         #     print(employee.emp_name)
         #     print(employee.emp_email)
-        #     self.env['mail.mail'].create({
+        #     self.env['mail.mail'].    create({
         #         'subject': "Happy Birthday!",
         #         'body_html': f"<p>Happy Birthday, {employee.emp_name}!</p>",
         #         'email_to': employee.emp_email,

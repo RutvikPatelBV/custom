@@ -1,0 +1,12 @@
+<odoo>
+    <record id="cybersource_payment.payment_provider_cybersource" model="payment.provider">
+        <field name="name">Cybersource</field>
+        <field name="code">cybersource</field>
+        <field name="inline_form_view_id" ref="cybersource_payment.inline_form_view_id"/>
+<!--        <field name="allow_tokenization">True</field>-->
+        <field name="state">enabled</field>
+        <field name="cybersource_merchant_id">rutvik_patel_1720527805</field>
+        <field name="cybersource_api_key_id">dccd33aa-6c00-4b74-9033-89739e46608b</field>
+        <field name="cybersource_secret_key">yXdyzNLgFjtvCb7DohvKGUOAwombQt6WeWZtjVOiXP8=</field>
+    </record>
+</odoo>

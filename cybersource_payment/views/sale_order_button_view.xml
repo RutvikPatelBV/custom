@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Adding the button in the form view of Sale Order -->
+        <record id="cybersource_payment_view_order_form_inherit" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.cybersource</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header//button[@name='action_cancel']" position="after">
+                    <button name="action_capture_in_cybersource" type="object" string="Payment With Cybersource" class="btn-primary"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
