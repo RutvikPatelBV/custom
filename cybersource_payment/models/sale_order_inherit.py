@@ -50,8 +50,10 @@ class SaleOrder(models.Model):
                 self.action_confirm()
                 if self.state=='to_approve':
                     self.approve_order()
-                invoice = self.create_invoices()
-                invoice.action_post()
+                invoice = self._create_invoices()  # Create the invoice
+                if invoice:
+                    invoice.action_post()  # Post the invoice
+
                 self.env['payment.transaction'].create({
                     'reference':self.name,
                     'amount': self.amount_total,
