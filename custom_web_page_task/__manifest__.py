@@ -9,6 +9,7 @@
     'author': 'Rutvik Patel',
     'depends': ['base', 'sale', 'website'],
     'data': [
+        "security/ir.model.access.csv",
         "views/custom_page.xml",
         "views/custom_menu.xml"
     ],

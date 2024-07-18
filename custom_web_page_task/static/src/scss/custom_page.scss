@@ -135,7 +135,10 @@
     justify-content: space-between;
     width: 500px;
 }
-
+.form_container{
+    display:flex;
+    gap:20px;
+    }
 #shopButton {
     margin-top: 15px;
     padding: 10px 20px;

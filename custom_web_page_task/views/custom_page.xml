@@ -5,7 +5,7 @@
                 <!-- Image Banner -->
                 <div class="row">
                     <div class="col-12 text-center mb-5">
-                        <img src="custom_web_page_task/static/src/static/static_img.jpg" class="img-fluid" alt="Banner Image"/>
+                        <img src="/custom_web_page_task/static/src/static/static_img.jpg" class="img-fluid" alt="Banner Image"/>
                     </div>
                 </div>
                 <div class="row">
@@ -17,24 +17,74 @@
                 <div class="row">
                     <div class="col-md-6">
                         <h2 class="mb-4">Get in Touch</h2>
-                        <form action="/submit/form" method="post" class="o_website_form shadow p-4 rounded">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" />
+                        <!-- Error Message -->
+                        <t t-if="error_message">
+                            <div class="alert alert-danger">
+                                <t t-esc="error_message"/>
                             </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" />
+                        </t>
+                        <form t-att-action="'/custom_route/submit'" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="" data-success-page="">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="s_website_form_rows row s_col_no_bgcolor form_container">
+                                <!-- Partner Name Field -->
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="partner_name">
+                                            <span class="s_website_form_label_content">Partner Name</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select id="partner_name" name="name" class="form-control s_website_form_input" >
+                                                <t t-foreach="all_objects" t-as="each_object">
+                                                    <option t-att-value="each_object.id">
+                                                        <t t-esc="each_object.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Phone Field -->
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="phone">
+                                            <span class="s_website_form_label_content">Phone</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="phone" type="text" class="form-control s_website_form_input" name="phone" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Email Field -->
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="email">
+                                            <span class="s_website_form_label_content">Email</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="email" type="email" class="form-control s_website_form_input" name="email" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="text" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="message">
+                                            <span class="s_website_form_label_content">Message</span>
+                                            <span class="s_website_form_mark">*</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="message" type="text" class="form-control s_website_form_input" name="message" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Submit Button -->
+                                <div class="form-group col-12 s_website_form_submit" data-name="Submit Button">
+                                    <div style="width: 200px;" class="s_website_form_label"></div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" />
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" class="form-control" rows="4" placeholder="Enter your message" ></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block mt-5">Submit</button>
                         </form>
                     </div>
                     <div class="col-md-6">
