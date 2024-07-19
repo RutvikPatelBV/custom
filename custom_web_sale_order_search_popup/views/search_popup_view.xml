@@ -1,0 +1,26 @@
+<odoo>
+    <!-- Popup Modal -->
+    <template id="search_modal_two" name="Search Modal">
+        <div class="modal fade" id="search_modal_two" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="searchModalLabel">Search Sale Order</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="search_form">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" id="search_input" placeholder="Enter Sale Order Number"/>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </form>
+                        <div id="search_results">
+                            <!-- Results will be appended here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>
