@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="dynamic_table_snippet" name="Dynamic Table Snippet">
+        <section class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Dynamic Table Snippet</h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Column 1</th>
+                                <th>Column 2</th>
+                                <th>Column 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="data" t-as="row">
+                                <td t-esc="row.column1"/>
+                                <td t-esc="row.column2"/>
+                                <td t-esc="row.column3"/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="external_snippets_two" inherit_id="website.snippets" priority="8">
+        <xpath expr="//div[@id='snippet_content']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="custom_snippets_task.dynamic_table_snippet"/>
+        </xpath>
+    </template>
+</odoo>

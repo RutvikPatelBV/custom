@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="search_order_snippet" name="Search Order Snippet">
+        <section class="container search-order-snippet">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Search Sale Order</h1>
+                    <form id="search_form" class="search-order-form">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="search_input" placeholder="Enter Sale Order Number" />
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
+                    <div id="search_results">
+                        <!-- Results will be appended here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="external_snippets_search_order" inherit_id="website.snippets" priority="8">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="custom_snippets_task.search_order_snippet" t-thumbnail="custom_snippets_task/static/src/img/snippets_thumbs/order_search.svg"/>
+        </xpath>
+    </template>
+</odoo>
