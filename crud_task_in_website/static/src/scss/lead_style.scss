@@ -1,0 +1,136 @@
+.lead-container {
+    margin-top: 30px;
+}
+
+.lead-container h1 {
+    font-size: 32px;
+    color: #714B67;
+}
+
+.lead-container .btn-create {
+    font-weight: 800;
+    border-style: dotted;
+    margin-bottom: 20px;
+    background-color: #ffeffb;
+    border-color: #714B67;
+    color: #714B67;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.container-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+.lead-container .btn-create:hover {
+    background-color: #714B67;
+    border-color: #ffeffb;
+    color:#ffeffb;
+}
+
+.lead-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.lead-container th, .lead-container td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.lead-container th {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #714B67;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.lead-container td {
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 16px;
+    color: #333;
+}
+
+.lead-container tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.lead-container .btn-link {
+    color: #714B67;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.lead-container .btn-link:hover {
+    color: #0056b3;
+}
+
+.lead-container .btn-link.text-danger {
+    color: #dc3545;
+}
+
+.lead-container .btn-link.text-danger:hover {
+    color: #bd2130;
+}
+
+.lead-container .fa {
+    font-size: 22px;
+}
+
+.lead-form-container {
+    margin-top: 30px;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    h1 {
+        font-size: 32px;
+        color: #714B67;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-control {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-shadow: none;
+            transition: border-color 0.3s;
+
+            &:focus {
+                border-color: #714B67;
+                box-shadow: none;
+            }
+        }
+    }
+
+    .btn-success {
+        background-color: #714B67;
+        border-color: #714B67;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, border-color 0.3s;
+
+        &:hover {
+            background-color: #9d6a8f;
+            border-color: #714B67;
+        }
+    }
+}

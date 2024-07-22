@@ -1,0 +1,42 @@
+<odoo>
+    <template id="lead_form" name="Lead Form">
+        <t t-call="website.layout">
+            <div class="container lead-form-container">
+                <h1><t t-if="lead">Edit Lead</t><t t-if="not lead">Create Lead</t></h1>
+                <form action="/my/lead/save" method="post" t-if="not lead">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" name="phone"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email"/>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+                <form action="/my/lead/update" method="post" t-if="lead">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" name="id" t-att-value="lead.id"/>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" t-att-value="lead.name" required="required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" name="phone" t-att-value="lead.phone"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" t-att-value="lead.email"/>
+                    </div>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>

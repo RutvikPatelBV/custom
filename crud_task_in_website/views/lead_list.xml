@@ -1,0 +1,40 @@
+<!-- views/lead_page.xml -->
+<odoo>
+    <template id="lead_page" name="Lead Page">
+        <t t-call="website.layout">
+            <div class="container lead-container">
+                <div class="container-header">
+                <h1>Leads</h1>
+                <a class="btn btn-primary btn-create" href="/my/lead/create">Create Lead</a>
+                    </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="leads" t-as="lead">
+                            <tr>
+                                <td><t t-esc="lead.name"/></td>
+                                <td><t t-esc="lead.phone"/></td>
+                                <td><t t-esc="lead.email"/></td>
+                                <td>
+                                    <a class="btn btn-link" t-att-href="'/my/lead/edit/' + str(lead.id)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-link text-danger" t-att-href="'/my/lead/delete/' + str(lead.id)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
