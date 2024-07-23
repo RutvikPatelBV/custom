@@ -1,0 +1,20 @@
+<odoo>
+    <!-- Product Detail Page -->
+    <template id="product_availability_message" inherit_id="website_sale.product">
+<!--        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="inside">-->
+<!--            <t t-if="product.virtual_available &lt; 0">-->
+<!--                <div class="alert alert-warning">The forecasted quantity is less than zero. The Add to cart functionality is disabled.</div>-->
+<!--            </t>-->
+<!--        </xpath>-->
+
+<!--        <xpath expr="//a[@id='add_to_cart']" position="attributes">-->
+<!--            <attribute name="class">-->
+<!--                <t t-if="product.virtual_available &lt; 0"> disabled </t>-->
+<!--            </attribute>-->
+<!--            <attribute name="aria-disabled">-->
+<!--                <t t-if="product.virtual_available &lt; 0"> true </t>-->
+<!--                <t t-else=""> false </t>-->
+<!--            </attribute>-->
+<!--        </xpath>-->
+    </template>
+</odoo>

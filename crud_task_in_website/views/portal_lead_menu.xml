@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="portal_lead_menu" inherit_id="portal.portal_my_home" priority="50">
-        <xpath expr="//div[hasclass('o_portal_category')]" position="inside">
+        <div id="portal_vendor_category" position="inside">
             <t t-call="portal.portal_docs_entry">
-                <t t-set="icon" t-value="'/crud_task_in_website/static/src/img/order_search.svg'"/>
+                <t t-set="icon" t-value="'/crud_task_in_website/static/src/img/lead.svg'"/>
                 <t t-set="title">Customer Lead List</t>
                 <t t-set="url" t-value="'/my/lead'"/>
                 <t t-set="text">Follow, view your customer lead</t>
                 <t t-set="config_card" t-value="True"/>
             </t>
-        </xpath>
+        </div>
     </template>
 </odoo>
